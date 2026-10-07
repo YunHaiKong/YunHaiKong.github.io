@@ -2,7 +2,19 @@
 
 你好！我是 **YunHaiKong**，一名坐标 **深圳** 的技术开发者。
 
-欢迎来到我的个人博客。这里不仅是我的技术笔记与思考沉淀，更是我的**个人工程作品展厅（Portfolio）**。我的研发兴趣主要聚焦于 **具身智能与机器人导航 (ROS 2 / SLAM)**、**自研 AI Agent 智能体底座**、**工业级计算机视觉与缺陷检测** 以及 **系统级底层逆向与数据工程**。
+欢迎来到我的个人博客与工程作品展厅（Portfolio）。我的研发兴趣主要聚焦于 **具身智能与机器人导航 (ROS 2 / SLAM)**、**自研 AI Agent 智能体底座**、**工业级计算机视觉与缺陷检测** 以及 **系统级底层逆向与数据工程**。
+
+---
+
+## 📬 联系方式 (Contact)
+
+- **微信**：`kang2389692497`
+- **邮箱**：[2389692497@qq.com](mailto:2389692497@qq.com)
+- **Base**：深圳
+- **GitHub**：[@YunHaiKong](https://github.com/YunHaiKong)
+- **作品集**：[👉 查看独立作品展厅 (/projects/)](/projects/)
+
+> 💬 欢迎技术探讨、项目交流与求职/合作沟通！
 
 ---
 
@@ -29,19 +41,3 @@
 - **AI Agent & 大语言模型**：ReAct 循环, Tool Calling / Function Calling, MCP 协议, Context 记忆机制, DeepSeek 调度
 - **计算机视觉 & 深度学习**：Ultralytics YOLOv11, PyTorch, CRNN + CTC, ResNet, OpenCV, DeepLabV3+, 工业视觉缺陷检测
 - **系统工程 & 后端数据**：CPython 内部机制, PE 导入表审计, Python 3.7 回退改造, Flask, Scrapy, MySQL, ECharts 数据可视化
-
----
-
-## 📍 基本信息
-- **Base**：深圳
-- **职业角色**：技术开发者 / 全栈与具身智能探索者
-
----
-
-## 📬 联系方式
-- **微信**：`kang2389692497`
-- **邮箱**：[2389692497@qq.com](mailto:2389692497@qq.com)
-- **GitHub**：[@YunHaiKong](https://github.com/YunHaiKong)
-- **作品集**：[/projects/](/projects/)
-
-欢迎技术探讨、项目交流与求职/合作沟通！
