@@ -1,6 +1,6 @@
 ---
 title: 你好，世界！我的个人博客正式起航
-published: 2026-10-07
+published: 2026-06-15
 description: 这是我通过 GitHub Pages 与 Astro 搭建的个人独立博客的第一篇文章，记录属于自己的文字与旅程。
 tags: [博客, Astro, GitHub Pages, 随笔]
 category: 生活随笔
