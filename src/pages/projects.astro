@@ -1,0 +1,304 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { url } from "../utils/url-utils";
+
+interface Project {
+	title: string;
+	category: string;
+	badge: string;
+	badgeColor?: string;
+	description: string;
+	highlights: string[];
+	tags: string[];
+	github?: string;
+	article?: string;
+	articleTitle?: string;
+	icon: string;
+}
+
+const projects: Project[] = [
+	{
+		title: "M20 Pro UGV / 机器狗 3D 激光导航与建图系统",
+		category: "具身智能 & 机器人",
+		badge: "实机适配",
+		badgeColor:
+			"bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20",
+		description:
+			"面向 M20 Pro 轮足/四足机器人底盘，在最新的 ROS 2 Jazzy 环境下完成激光雷达与 IMU 硬件接入，集成 3D 紧耦合激光惯导 SLAM 与 Nav4D 全局路径规划系统。",
+		highlights: [
+			"基于 FAST-LIO2 实现高频、低漂移的实时 3D 点云激光里程计与建图",
+			"适配 Nav4D 全局规划器，支持多维空间运动约束与复杂地面地形动态避障",
+			"打通从底盘驱动、传感器时钟同步到自主导航控制决策的全链路 ROS 2 通信",
+		],
+		tags: ["ROS 2 Jazzy", "FAST-LIO2", "Nav4D", "3D LiDAR SLAM", "C++"],
+		github: "https://github.com/YunHaiKong/ugv-nav4d-m20-global-planner",
+		icon: "material-symbols:precision-manufacturing-outline-rounded",
+	},
+	{
+		title: "Purr-Agent 模块化轻量级自主智能体框架",
+		category: "AI Agent & 智能体",
+		badge: "自研核心",
+		badgeColor:
+			"bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20",
+		description:
+			"从零自主研发的解耦型 AI Agent 框架，摆脱重型黑盒框架束缚，专注于清晰的 ReAct 决策循环、长上下文记忆管理与开放工具生态。",
+		highlights: [
+			"清晰的状态机驱动架构，支持多轮交互与动态思维链（CoT）逐步推理",
+			"标准化 Tool Calling 与插件协议，无缝接入外部 API 与本地系统工具",
+			"轻量纯粹的工程设计，便于私有化离线部署与垂直行业场景深度定制",
+		],
+		tags: ["AI Agent", "Python", "ReAct", "Tool Calling", "Prompt Engineering"],
+		github: "https://github.com/YunHaiKong/Purr-Agent",
+		icon: "material-symbols:smart-toy-outline-rounded",
+	},
+	{
+		title: "DeepSeek Harness: Everything is a Plugin",
+		category: "AI Agent & 智能体",
+		badge: "插件化基座",
+		badgeColor:
+			"bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20",
+		description:
+			"以“一切皆插件”为设计理念的大模型调度与应用基座，旨在为 DeepSeek 等前沿开源大模型提供高扩展性的运行管线与功能外挂体系。",
+		highlights: [
+			"高度解耦的插件插槽体系，提示词模板、工具函数与后处理流动态热拔插",
+			"规范化执行生命周期监听，便于分布式调用追踪、审计与性能监控",
+			"统一模型交互抽象层，平滑对接多样化本地/云端推理服务端",
+		],
+		tags: ["DeepSeek", "Plugin Architecture", "LLM Pipeline", "Python"],
+		github: "https://github.com/YunHaiKong/deepseek-harness",
+		icon: "material-symbols:extension-outline-rounded",
+	},
+	{
+		title: "YOLOv11 工业级电子元器件缺陷检测系统",
+		category: "计算机视觉 & 工业质检",
+		badge: "端到端系统",
+		badgeColor:
+			"bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20",
+		description:
+			"基于 Ultralytics 最新 YOLOv11 目标检测架构，针对三极管、电容等微小电子元器件构建的高精度工业质检系统，配套完备的 Web 交互看板。",
+		highlights: [
+			"精准识别三极管等元器件的「完好」、「缺失」、「针脚弯曲」三种关键工况",
+			"针对细小引脚特征进行微调与数据增强，克服工业反光与微弱形变干扰",
+			"基于 Flask 封装开箱即用的 Web 操作工作台，支持实时图像上传与置信度热区呈现",
+		],
+		tags: ["YOLOv11", "PyTorch", "工业视觉质检", "Flask", "目标检测"],
+		github: "https://github.com/YunHaiKong/yolov11-dianziyuanjian",
+		icon: "material-symbols:visibility-outline-rounded",
+	},
+	{
+		title: "OpenLaokeWin7：零依赖 Python 运行时与 PE 审计体系",
+		category: "系统底层 & 逆向移植",
+		badge: "博客专栏",
+		badgeColor:
+			"bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20",
+		description:
+			"针对 Windows 7 等受限内网/工业老旧终端，定制零外部依赖的独立嵌入式 CPython 运行时，审计并修补 20+ PE DLL 动态链接限制，无损回退运行现代智能体代码。",
+		highlights: [
+			"完整审计 PE 导入表与 KERNEL32 / Universal CRT 缺失系统调用",
+			"无侵入定制 Python 3.7+ 独立分发包与绿色免安装运行架构",
+			"沉淀 4 篇系统级万字技术复盘长文，完整记录选型、源码重构与审计全流程",
+		],
+		tags: [
+			"Windows 7",
+			"CPython 逆向",
+			"PE 导入表审计",
+			"Python 3.7 回退",
+			"嵌入式打包",
+		],
+		article: "/posts/win7-agent-selection-retrospective/",
+		articleTitle: "阅读专栏系列文章 (4篇)",
+		icon: "material-symbols:terminal-rounded",
+	},
+	{
+		title: "CRNN + CTC 复杂字符验证码端到端识别系统",
+		category: "计算机视觉 & 深度学习",
+		badge: "算法模型",
+		badgeColor:
+			"bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20",
+		description:
+			"针对 4~7 位不定长、带扭曲与噪点的字母数字验证码构建的端到端深度学习识别系统，彻底摆脱传统图像形态学字符切割局限。",
+		highlights: [
+			"采用 CNN 特征抽取 + 双向 LSTM 序列建模 + CTC 损失函数的黄金组合",
+			"端到端直接输出预测字符序列，对字符粘连、倾斜扭曲具备极强鲁棒性",
+			"集成高性能推理脚本，毫秒级快速完成验证码自动识别",
+		],
+		tags: ["CRNN", "CTC Loss", "BiLSTM", "PyTorch", "OCR"],
+		github: "https://github.com/YunHaiKong/4-7-digits-verification-code",
+		icon: "material-symbols:password-rounded",
+	},
+	{
+		title: "ResNet 工业包装质量智能检测 Web 应用",
+		category: "计算机视觉 & 工业质检",
+		badge: "Web 落地",
+		badgeColor:
+			"bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20",
+		description:
+			"基于 ResNet 卷积神经网络打造的工业品外观包装缺陷分类系统，配合交互式 Web 工作台提供实时合格率判别与统计报表。",
+		highlights: [
+			"ResNet 深度残差特征提取，精准捕捉包装破损、封口不良等细微瑕疵",
+			"友好的 Web 前端交互，支持图片拖拽批量上传与置信度实时可视化",
+			"内置轻量模型自动热加载与生产检测数据统计分析看板",
+		],
+		tags: ["ResNet", "PyTorch", "图像分类", "Web UI", "质检看板"],
+		github: "https://github.com/YunHaiKong/Resnet_MintCandy",
+		icon: "material-symbols:verified-outline-rounded",
+	},
+	{
+		title: "分布式网络文学爬虫与多维 ECharts 数据可视化大屏",
+		category: "数据工程 & 爬虫分析",
+		badge: "全栈数据",
+		badgeColor:
+			"bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20",
+		description:
+			"基于 Scrapy 框架的高并发网络爬虫与多维数据分析系统，结合 Flask 与 ECharts 打造沉浸式数据大屏，洞察海量网络文学市场趋势。",
+		highlights: [
+			"Scrapy 构建的高鲁棒爬虫管线，支持断点续爬、反爬规避与自动化持久化",
+			"多维数据统计引擎：分析评分、热度点击、分类标签与题材偏好关联",
+			"Flask + ECharts 交互式大屏，动态呈现图表数据流与趋势热力图",
+		],
+		tags: ["Scrapy", "Flask", "ECharts", "MySQL", "数据工程"],
+		github: "https://github.com/YunHaiKong/FeiluNovelCrawl",
+		icon: "material-symbols:monitoring-rounded",
+	},
+];
+---
+
+<MainGridLayout title="精选项目与作品集" description="个人精选开源项目与技术工程作品展示，涵盖具身智能机器人、AI Agent 智能体框架、计算机视觉工业质检与系统级底层工程">
+    <div class="flex flex-col gap-6 w-full">
+        <!-- Hero Header -->
+        <div class="card-base rounded-[var(--radius-large)] p-6 md:p-8 relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary)] mb-3">
+                    <Icon name="material-symbols:folder-outline-rounded" class="text-base" />
+                    <span>PORTFOLIO / 作品矩阵</span>
+                </div>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-black/90 dark:text-white/90 tracking-tight">
+                    精选项目与工程实践
+                </h1>
+                <p class="text-black/65 dark:text-white/65 text-sm md:text-base mt-2.5 max-w-3xl leading-relaxed">
+                    这里不仅是代码的堆叠，更是对复杂工程问题的拆解与落地。收录了我在 <strong>具身智能机器人</strong>、<strong>自研 AI Agent 框架</strong>、<strong>工业视觉质检</strong> 以及 <strong>系统底层逆向</strong> 等领域的代表性作品。
+                </p>
+
+                <!-- Stats summary -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-black/5 dark:border-white/5">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-[var(--primary)]">8+</span>
+                        <span class="text-xs text-black/50 dark:text-white/50">落地与实战项目</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-[var(--primary)]">5 大</span>
+                        <span class="text-xs text-black/50 dark:text-white/50">核心技术领域</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-[var(--primary)]">实机适配</span>
+                        <span class="text-xs text-black/50 dark:text-white/50">ROS 2 & 工业硬件</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-[var(--primary)]">100%</span>
+                        <span class="text-xs text-black/50 dark:text-white/50">开源 & 深度复盘</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            {projects.map((item) => (
+                <div class="card-base rounded-[var(--radius-large)] p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border border-black/5 dark:border-white/5">
+                    <div>
+                        <!-- Top header -->
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-xl flex items-center justify-center bg-[var(--primary)]/10 text-[var(--primary)] text-2xl shrink-0">
+                                    <Icon name={item.icon} />
+                                </div>
+                                <div>
+                                    <span class="text-xs font-medium text-black/45 dark:text-white/45 block">
+                                        {item.category}
+                                    </span>
+                                    <h2 class="text-base font-bold text-black/90 dark:text-white/90 leading-snug">
+                                        {item.title}
+                                    </h2>
+                                </div>
+                            </div>
+                            <span class={`px-2 py-0.5 rounded text-[0.7rem] font-semibold whitespace-nowrap shrink-0 ${item.badgeColor || 'bg-black/5 dark:bg-white/5 text-black/60 dark:text-white/60'}`}>
+                                {item.badge}
+                            </span>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-xs md:text-sm text-black/70 dark:text-white/70 leading-relaxed mt-2">
+                            {item.description}
+                        </p>
+
+                        <!-- Highlights -->
+                        <ul class="mt-3.5 space-y-1.5 text-xs text-black/60 dark:text-white/60">
+                            {item.highlights.map((point) => (
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-[var(--primary)] font-bold mt-0.5 leading-none">▪</span>
+                                    <span>{point}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <!-- Tags & Action Links -->
+                    <div class="mt-5 pt-4 border-t border-black/5 dark:border-white/5">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            {item.tags.map((tag) => (
+                                <span class="px-2 py-0.5 rounded-md text-[0.725rem] font-medium bg-black/5 dark:bg-white/5 text-black/65 dark:text-white/65">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+
+                        <div class="flex items-center gap-2 flex-wrap">
+                            {item.github && (
+                                <a
+                                    href={item.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15 text-black/80 dark:text-white/80 transition active:scale-95"
+                                >
+                                    <Icon name="fa6-brands:github" class="text-sm" />
+                                    <span>查看源码</span>
+                                    <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.65rem] opacity-60" />
+                                </a>
+                            )}
+                            {item.article && (
+                                <a
+                                    href={url(item.article)}
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-white hover:opacity-90 transition active:scale-95 shadow-sm"
+                                >
+                                    <Icon name="material-symbols:menu-book-outline-rounded" class="text-sm" />
+                                    <span>{item.articleTitle || "阅读深度复盘"}</span>
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <!-- Footer Contact Callout -->
+        <div class="card-base rounded-[var(--radius-large)] p-6 md:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border border-black/5 dark:border-white/5">
+            <div>
+                <h3 class="text-base md:text-lg font-bold text-black/90 dark:text-white/90">
+                    对以上项目感兴趣，或有技术交流/项目合作意向？
+                </h3>
+                <p class="text-xs md:text-sm text-black/60 dark:text-white/60 mt-1">
+                    欢迎微信交流或查阅更多个人信息。Base 深圳，专注硬核技术落地。
+                </p>
+            </div>
+            <div class="flex items-center gap-3">
+                <a
+                    href={url('/about/')}
+                    class="btn-regular px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition active:scale-95 whitespace-nowrap"
+                >
+                    关于我 / 联系方式
+                </a>
+            </div>
+        </div>
+    </div>
+</MainGridLayout>
