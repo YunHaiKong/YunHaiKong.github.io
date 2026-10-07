@@ -18,12 +18,12 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "assets/images/banner.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+		src: "assets/images/arknights-banner.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
 			enable: true, // Display the credit text of the banner image
-			text: "空色天絵 / NEO TOKYO NOIR 01", // Credit text to be displayed
-			url: "https://www.pixiv.net/artworks/111024784", // (Optional) URL link to the original artwork or artist's page
+			text: "明日方舟 / 音律联觉「昔时我见」", // Credit text to be displayed
+			url: "https://prts.wiki/w/%E5%AE%98%E6%96%B9%E5%AE%A3%E4%BC%A0%E5%9B%BE%E4%B8%80%E8%A7%88#2026%E5%B9%B4_%E9%9F%B3%E5%BE%8B%E8%81%94%E8%A7%89", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	toc: {
