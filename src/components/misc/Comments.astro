@@ -1,0 +1,88 @@
+---
+import { Icon } from "astro-icon/components";
+import { commentConfig } from "src/config";
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+const giscus = commentConfig.giscus;
+---
+
+{commentConfig.enable && commentConfig.type === "giscus" && giscus && (
+    <div class:list={["card-base p-6 md:p-8 rounded-[var(--radius-large)] onload-animation w-full", className]}>
+        <div class="flex items-center gap-2 mb-4 text-xl font-bold text-black/80 dark:text-white/80">
+            <Icon name="material-symbols:chat-outline-rounded" class="text-[var(--primary)] text-2xl" />
+            <span>评论交流</span>
+        </div>
+
+        <div id="giscus-container" class="w-full min-h-[120px]">
+            <!-- Giscus script will be injected here -->
+        </div>
+    </div>
+
+    <script is:inline define:vars={{ giscus }}>
+        function getGiscusTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            return isDark ? (giscus.darkTheme || 'noborder_dark') : (giscus.theme || 'light');
+        }
+
+        function loadGiscus() {
+            const container = document.getElementById('giscus-container');
+            if (!container) return;
+
+            // Clear previous iframe if any
+            container.innerHTML = '';
+
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', giscus.repo);
+            script.setAttribute('data-repo-id', giscus.repoId);
+            script.setAttribute('data-category', giscus.category);
+            script.setAttribute('data-category-id', giscus.categoryId);
+            script.setAttribute('data-mapping', giscus.mapping || 'pathname');
+            script.setAttribute('data-strict', giscus.strict ? '1' : '0');
+            script.setAttribute('data-reactions-enabled', giscus.reactionsEnabled ? '1' : '0');
+            script.setAttribute('data-emit-metadata', giscus.emitMetadata ? '1' : '0');
+            script.setAttribute('data-input-position', giscus.inputPosition || 'top');
+            script.setAttribute('data-theme', getGiscusTheme());
+            script.setAttribute('data-lang', giscus.lang || 'zh-CN');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+
+            container.appendChild(script);
+        }
+
+        function updateGiscusTheme() {
+            const theme = getGiscusTheme();
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+            }
+        }
+
+        // Initial load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        } else {
+            loadGiscus();
+        }
+
+        // Swup page transition support
+        document.addEventListener('swup:page:view', loadGiscus);
+
+        // Theme toggle observer
+        if (!window.__giscusThemeObserverRegistered) {
+            window.__giscusThemeObserverRegistered = true;
+            const observer = new MutationObserver((mutations) => {
+                for (const mutation of mutations) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        updateGiscusTheme();
+                    }
+                }
+            });
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        }
+    </script>
+)}
