@@ -9,8 +9,8 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "我的博客",
-	subtitle: "记录生活与技术",
+	title: "YunHaiKong",
+	subtitle: "具身智能 · AI Agent · 工业视觉与工程落地",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
@@ -31,12 +31,46 @@ export const siteConfig: SiteConfig = {
 		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
 	},
 	favicon: [
-		// Leave this array empty to use the default favicon
-		// {
-		//   src: '/favicon/icon.png',    // Path of the favicon, relative to the /public directory
-		//   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
-		//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
-		// }
+		{
+			src: "/favicon/favicon-light-32.png",
+			theme: "light",
+			sizes: "32x32",
+		},
+		{
+			src: "/favicon/favicon-light-128.png",
+			theme: "light",
+			sizes: "128x128",
+		},
+		{
+			src: "/favicon/favicon-light-180.png",
+			theme: "light",
+			sizes: "180x180",
+		},
+		{
+			src: "/favicon/favicon-light-192.png",
+			theme: "light",
+			sizes: "192x192",
+		},
+		{
+			src: "/favicon/favicon-dark-32.png",
+			theme: "dark",
+			sizes: "32x32",
+		},
+		{
+			src: "/favicon/favicon-dark-128.png",
+			theme: "dark",
+			sizes: "128x128",
+		},
+		{
+			src: "/favicon/favicon-dark-180.png",
+			theme: "dark",
+			sizes: "180x180",
+		},
+		{
+			src: "/favicon/favicon-dark-192.png",
+			theme: "dark",
+			sizes: "192x192",
+		},
 	],
 };
 
