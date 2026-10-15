@@ -1,173 +1,221 @@
 ---
-title: 【云端可视化】魔搭平台 DSW 实例配置 VNC 远程桌面与 Cloudflare 穿透实战
+title: 【云端实测】魔搭平台（ModelScope）DSW 配置 VNC 远程桌面与 WebSocket 连通性测试指南
 published: 2026-10-16
-description: 针对 ModelScope 魔搭平台 DSW 容器无图形界面的痛点，通过 Xvfb + Xfce4 + x11vnc + NoVNC 搭建网页版远程桌面，并利用 Cloudflare Tunnel 完美绕过平台网关对 WebSocket 的拦截限制。
-image: /assets/images/hello-robot-task1/g2_isaacsim_dual_arm_overview.png
-tags: [VNC, NoVNC, ModelScope, 魔搭平台, 远程桌面, Cloudflare Tunnel, Linux运维]
+description: 基于 ModelScope 魔搭平台 DSW 实例，从 HTTP 端口透传、WebSocket 连通性验证到 XFCE4 桌面与 noVNC 服务的完整配置流程，包含 15 张实操步骤截图与避坑实测。
+image: /assets/images/modelscope-vnc/step_15.png
+tags: [VNC, NoVNC, ModelScope, 魔搭平台, 远程桌面, WebSocket, Linux运维]
 category: 技术架构
 draft: false
 ---
 
-## 📌 为什么需要云端 VNC 远程桌面？
+## 📌 背景介绍
 
-在阿里云 ModelScope（魔搭）平台使用免费 GPU 算力实例（DSW）时，平台默认仅提供 **JupyterLab** 与 **Web Terminal** 交互界面。
+在阿里云 **ModelScope（魔搭平台）** 的 DSW（Data Science Workshop）容器环境中，平台默认主要提供基于 Web 的 JupyterLab 和纯命令行终端。
 
-但在实际开发具身智能、计算机视觉、GUI 自动化测试或机器人仿真时，我们经常需要：
-1. 直观查看桌面图形应用与软件弹窗；
-2. 检查多窗口并发工具（如文件管理器、图像预览器、ROS 图形工具等）；
-3. 进行可视化排错与交互式调试。
-
-然而，云端 Linux 容器既没有物理显卡显示输出，也受到平台网络网关的严格端口与协议限制。本文记录如何在魔搭 DSW 容器中从零搭建 **轻量级 Xfce4 桌面 + NoVNC 网页客户端**，并通过 **Cloudflare 隧道** 突破网络限制的完整解决方案。
+但在实际进行模型调试、GUI 工具操作、自动化测试以及具身智能可视化时，我们常常需要一个真正的 **Linux 图形桌面界面**。本文基于魔搭实例环境，完整记录从**底层端口转发与 WebSocket 连通性测试**，到**搭建 XFCE4 桌面并利用 noVNC 实现免客户端网页直连**的全流程实操记录。
 
 ---
 
-## 🏗️ 架构设计与技术全景
+## 🛠️ 第一步：启动实例并进入终端
 
-一套完整的云端 Web 远程桌面系统包含以下 5 层组件：
+首先在魔搭控制台中打开实例（以 CPU 或 GPU 环境下的 Notebook 为例）：
 
-```mermaid
-flowchart LR
-    A["虚拟显示 (Xvfb)"] --> B["桌面环境 (Xfce4)"]
-    B --> C["VNC 协议服务 (x11vnc :5900)"]
-    C --> D["WebSockets 桥接 (websockify :6080)"]
-    D --> E["网页客户端 (noVNC)"]
-    E --> F["公网穿透 (Cloudflare Tunnel)"]
-    F --> G["本地浏览器免客户端访问"]
-```
+![打开魔搭环境下的Notebook](/assets/images/modelscope-vnc/step_01.png)
 
-1. **Xvfb (X Virtual Framebuffer)**：在没有物理显示器的服务器内存中虚拟一个 1920x1080 24位的虚拟显示屏（`:1`）。
-2. **Xfce4**：极度轻量、资源消耗低的经典 Linux 桌面环境。
-3. **x11vnc**：捕获 `:1` 虚拟屏幕的画面并提供标准 RFB 远程帧缓冲协议服务（端口 5900）。
-4. **websockify + noVNC**：把 TCP 层的 VNC 协议转为 HTML5 WebSocket 协议，实现**打开任意浏览器就能直接操作桌面**。
-5. **Cloudflare Tunnel (穿透核心)**：魔搭平台默认的 `/proxy/端口/` 路由会过滤或截断长连接 WebSocket 握手包。通过建立安全的 Cloudflare 临时隧道，可以绕过平台网关限制。
+等待实例状态变为运行中，点击进入 DSW 工作空间：
+
+![启动DSW开发实例](/assets/images/modelscope-vnc/step_02.png)
+
+进入熟悉的 JupyterLab 交互界面：
+
+![进入Notebook环境](/assets/images/modelscope-vnc/step_03.png)
+
+在工作区点击菜单 `File` ➔ `New` ➔ `Terminal`，新建一个黑色终端窗口：
+
+![在JupyterLab新建终端](/assets/images/modelscope-vnc/step_04.png)
 
 ---
 
-## 🛠️ 第一步：非交互式静默安装桌面组件
+## 🌐 第二步：测试实例 HTTP 端口反向代理转发
 
-在魔搭 Terminal 中执行安装命令。注意：必须通过预设环境变量规避 `keyboard-configuration` 弹出的键盘布局交互式阻断：
+在配置复杂的 VNC 服务之前，首先要验证魔搭平台的网关是否支持向外暴露自定义端口。
+
+在终端中输入以下命令，启动一个临时的 Python HTTP 测试服务（监听 8765 端口）：
 
 ```bash
-# 避免 apt 弹窗阻塞交互
-export DEBIAN_FRONTEND=noninteractive
-echo 'keyboard-configuration keyboard-configuration/layoutcode string us' | debconf-set-selections
-
-# 安装 Xvfb、x11vnc、novnc、xfce4 及其图形基础库
-apt-get update -qq && apt-get install -y -qq \
-    xvfb \
-    x11vnc \
-    novnc \
-    websockify \
-    xfce4 \
-    xfce4-terminal \
-    dbus-x11 \
-    mesa-vulkan-drivers \
-    libglu1-mesa
+mkdir -p /tmp/port-test
+echo "DSW PORT TEST OK" > /tmp/port-test/index.html
+cd /tmp/port-test
+python -m http.server 8765 --bind 0.0.0.0
 ```
+
+![启动8765端口测试服务](/assets/images/modelscope-vnc/step_05.png)
+
+接下来查找当前实例的专属名称（在当前浏览器的 URL 地址栏中即可找到）：
+
+![查找与提取实例名称](/assets/images/modelscope-vnc/step_06.png)
+
+> **实例 URL 规律**：  
+> 例如当前实例地址为：`https://dsw-gateway-cn-hangzhou.data.aliyun.com/dsw-2261799/proxy/8765/`  
+> 其中 `dsw-2261799` 即为**实例名称**。
+
+大家在测试端口转发时，修改链接并填入自己的实例名称：  
+`https://dsw-gateway-cn-hangzhou.data.aliyun.com/{你的实例名称}/proxy/8765/`
+
+保持终端服务运行，在浏览器中打开该测试链接，出现如下字样即说明魔搭平台的端口转发机制完全正常：
+
+![端口测试返回成功](/assets/images/modelscope-vnc/step_07.png)
 
 ---
 
-## 📜 第二步：编写一键守护启动脚本
+## 🔌 第三步：测试 WebSocket 协议连通性
 
-将所有服务整合成持久化脚本 `/mnt/workspace/start_vnc.sh`，保证容器在任何时候都能一键拉起：
+由于 noVNC 必须依赖 **WebSocket 协议**与后端的 websockify 进行双向实时数据交互，因此必须进一步测试魔搭反向代理网关是否会拦截 WebSocket。
+
+在 JupyterLab 中打开第二个新终端，安装 aiohttp 并运行轻量 WebSocket 测试脚本：
 
 ```bash
-cat > /mnt/workspace/start_vnc.sh <<'EOF'
-#!/bin/bash
-export DISPLAY=:1
+python -m pip install -q aiohttp
 
-# 1. 清理遗留僵尸进程
-pkill Xvfb 2>/dev/null
-pkill x11vnc 2>/dev/null
-pkill websockify 2>/dev/null
-sleep 1
+cat > /tmp/test_ws.py <<'PY'
+from aiohttp import web
 
-# 2. 启动虚拟显示屏 (1080P, 24位色深)
-Xvfb :1 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset > /mnt/workspace/xvfb.log 2>&1 &
-sleep 3
+async def home(request):
+    return web.Response(text="""
+    <h2>DSW WebSocket Test</h2>
+    <pre id="result">Connecting...</pre>
+    <script>
+      const url = new URL('ws', location.href);
+      url.protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+      const ws = new WebSocket(url);
+      ws.onmessage = e =>
+        document.getElementById('result').textContent = e.data;
+      ws.onerror = () =>
+        document.getElementById('result').textContent = 'WebSocket ERROR';
+    </script>
+    """, content_type="text/html")
 
-# 3. 启动 Xfce4 桌面会话
-dbus-launch --exit-with-session startxfce4 > /mnt/workspace/xfce.log 2>&1 &
-sleep 5
+async def websocket(request):
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+    await ws.send_str("WEBSOCKET OK")
+    async for message in ws:
+        pass
+    return ws
 
-# 4. 启动 x11vnc 服务 (监听 5900 端口，免密共享模式)
-x11vnc -display :1 -forever -shared -nopw -rfbport 5900 -quiet > /mnt/workspace/x11vnc.log 2>&1 &
+app = web.Application()
+app.router.add_get("/", home)
+app.router.add_get("/ws", websocket)
+web.run_app(app, host="0.0.0.0", port=8766)
+PY
+
+python /tmp/test_ws.py
+```
+
+![启动WebSocket测试服务](/assets/images/modelscope-vnc/step_08.png)
+
+同样，在浏览器中打开对应 8766 端口的测试链接：  
+`https://dsw-gateway-cn-hangzhou.data.aliyun.com/{你的实例名称}/proxy/8766/`
+
+页面回显如下图所示的 `WEBSOCKET OK`，说明平台的 WebSocket 通道畅通无阻，可以放心部署 noVNC：
+
+![WebSocket连通性验证成功](/assets/images/modelscope-vnc/step_09.png)
+
+---
+
+## 💻 第四步：安装 noVNC 与 XFCE4 桌面组件
+
+确定网络通道完全支持后，我们在终端中正式安装图形桌面与远程控制协议栈。
+
+### 1. 安装桌面核心依赖包
+
+```bash
+apt-get update
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  --no-install-recommends \
+  xfce4 xfce4-terminal \
+  xvfb x11vnc novnc websockify \
+  dbus-x11 xfonts-base
+```
+
+![安装桌面组件依赖](/assets/images/modelscope-vnc/step_10.png)
+
+安装涉及较多字体和图形渲染库，下载与解压安装通常需要数分钟：
+
+![桌面组件安装完成](/assets/images/modelscope-vnc/step_11.png)
+
+出现上述终端提示即表示基础组件安装完成。
+
+### 2. 设置 VNC 访问密码
+
+为了安全起见，配置 VNC 服务的连接密码：
+
+```bash
+mkdir -p ~/.vnc
+x11vnc -storepasswd ~/.vnc/passwd
+chmod 600 ~/.vnc/passwd
+```
+
+在终端交互提示下连续输入两次你自己设定的密码（注意终端中输入密码时不回显），并选择 `y` 保存密码文件：
+
+![设置VNC访问密码](/assets/images/modelscope-vnc/step_12.png)
+
+---
+
+## 🚀 第五步：启动服务与桌面会话
+
+依次在终端中执行以下命令拉起各个服务守护进程：
+
+### 1. 启动虚拟显示器与 XFCE 会话
+```bash
+# 启动 1280x800 分辨率、24位真彩色的虚拟屏幕 :99
+Xvfb :99 -screen 0 1280x800x24 -nolisten tcp > /tmp/xvfb.log 2>&1 &
+
 sleep 2
 
-# 5. 启动 websockify 网页代理 (监听 6080 端口)
-websockify 6080 localhost:5900 --web=/usr/share/novnc > /mnt/workspace/novnc.log 2>&1 &
-sleep 2
-
-echo '>>> [SUCCESS] VNC & NoVNC 桌面服务已成功启动！'
-EOF
-
-chmod +x /mnt/workspace/start_vnc.sh
-bash /mnt/workspace/start_vnc.sh
+# 在 :99 屏幕下拉起 XFCE4 桌面
+DISPLAY=:99 dbus-launch --exit-with-session xfce4-session > /tmp/xfce.log 2>&1 &
 ```
 
----
-
-## 🌐 第三步：部署 Cloudflare 穿透解决 WebSocket 阻断
-
-### 关键避坑点
-很多同学在魔搭上启动 NoVNC 后，尝试通过 JupyterLab 自带的 URL 代理（如 `https://dsw-gateway.../proxy/6080/`）访问，发现**页面能打开，但点击 Connect 后立刻报错断开**。  
-这是因为平台反向代理网关在处理 WebSocket `Upgrade` 握手时发生了丢包或协议降级。
-
-### 完美解法：使用轻量 Cloudflare 临时隧道
-
+### 2. 启动 x11vnc 服务
 ```bash
-cd /mnt/workspace
-
-# 1. 下载预编译静态二进制程序 (国内走代理镜像加速)
-curl -L --connect-timeout 15 --max-time 600 -o cloudflared \
-    https://gh-proxy.com/https://github.com/cloudflare/cloudflared/releases/download/2025.5.0/cloudflared-linux-amd64
-chmod +x cloudflared
-
-# 2. 后台启动隧道代理本地 6080 端口
-nohup ./cloudflared tunnel --url http://localhost:6080 --no-autoupdate > /mnt/workspace/cloudflared.log 2>&1 &
-
-# 3. 提取公网访问地址
-sleep 15
-grep -o 'https://[a-z0-9-]*\.trycloudflare\.com' /mnt/workspace/cloudflared.log | head -1
+DISPLAY=:99 x11vnc \
+  -display :99 \
+  -rfbport 5900 \
+  -localhost \
+  -forever \
+  -shared \
+  -rfbauth ~/.vnc/passwd \
+  > /tmp/x11vnc.log 2>&1 &
 ```
 
-控制台会打印出一条临时的公网安全链接，例如：  
-`https://random-subdomain.trycloudflare.com`
-
----
-
-## 🖥️ 第四步：浏览器直接连接测试
-
-1. 复制终端中输出的 `https://xxx.trycloudflare.com`；
-2. 在浏览器中打开并访问：
-   ```text
-   https://xxx.trycloudflare.com/vnc.html
-   ```
-3. 页面会展现出优雅的 **noVNC 客户端界面**；
-4. 点击中间醒目的 **「Connect」** 按钮（默认无需密码）；
-5. 熟悉的 **Xfce4 Linux 桌面** 瞬间呈现在网页之中！
-
-你可以在桌面中随意打开：
-- **Xfce Terminal**：拥有完整的终端交互；
-- **Thunar 文件管理器**：图形化拖拽查看代码与 USD 资产；
-- **图像预览器**：实时查看渲染生成的各类测试图表与点云。
-
----
-
-## 🔄 容器重启后的极速恢复流程
-
-魔搭的系统盘会在实例关闭后重置，但持久盘 `/mnt/workspace` 中的脚本与配置完好无损。实例重启后仅需依次执行以下命令：
-
+### 3. 启动 noVNC 网关
 ```bash
-# 1. 恢复系统基础组件
-export DEBIAN_FRONTEND=noninteractive
-apt-get update -qq && apt-get install -y -qq xvfb x11vnc novnc websockify xfce4 xfce4-terminal dbus-x11 mesa-vulkan-drivers libglu1-mesa
-
-# 2. 启动桌面与穿透
-bash /mnt/workspace/start_vnc.sh
-nohup /mnt/workspace/cloudflared tunnel --url http://localhost:6080 --no-autoupdate > /mnt/workspace/cloudflared.log 2>&1 &
-
-# 3. 获取新公网链接
-sleep 15 && grep -o 'https://[a-z0-9-]*\.trycloudflare\.com' /mnt/workspace/cloudflared.log | head -1
+websockify --web=/usr/share/novnc 0.0.0.0:6080 127.0.0.1:5900
 ```
-只需 1 分钟，全套带公网穿透的云端 Linux 图形工作站即可完全复活！
+
+> **注意**：请保持运行 `websockify` 的终端窗口不关闭。
+
+---
+
+## 🖥️ 第六步：浏览器连线访问
+
+noVNC 使用 WebSocket 转发 VNC 画面数据。在浏览器中打开专用连接链接（**注意替换为你自己的实例名称**）：
+
+```text
+https://dsw-gateway-cn-hangzhou.data.aliyun.com/{你的实例名称}/proxy/6080/vnc.html?path={你的实例名称}%2Fproxy%2F6080%2Fwebsockify
+```
+
+页面将展示出标准的 noVNC 网页客户端连接界面：
+
+![打开noVNC网页端登录页面](/assets/images/modelscope-vnc/step_13.png)
+
+点击左侧的 **「Connect」** 按钮，在弹出的窗口中输入刚刚设置的 VNC 密码：
+
+![输入VNC密码连接](/assets/images/modelscope-vnc/step_14.png)
+
+敲击回车确认，熟悉的 **XFCE4 Linux 图形桌面** 瞬间呈现在网页之中！
+
+![成功进入云端XFCE4桌面环境](/assets/images/modelscope-vnc/step_15.png)
+
+至此，魔搭云端环境下的远程桌面测试与部署大功告成！你可以在网页中自由使用终端、文件管理器或运行任何带 GUI 交互的开发程序。
