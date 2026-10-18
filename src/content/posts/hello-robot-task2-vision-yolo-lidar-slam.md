@@ -373,7 +373,9 @@ def integrate(self, cloud: PointCloud, pose: Pose2D) -> int:
       --headless \
       --output outputs/chapter8/3d_with_loop
   ```
-  *预期现象*：原始轨迹随着运动累积逐渐向外偏移；当机器人巡航返回起点附近时，触发快照描述子与 ICP 几何配准回环检测，执行高斯-牛顿位姿图优化，轨迹重新闭合，并调用 `rebuild_maps()` 消除历史重影。
+  **【实测 3D 点云建图与回环闭合效果】**：
+  ![实验 A 实测 3D 点云地图与回环闭合效果](/assets/images/hello-robot-task2/chapter8_3d_with_loop_map.png)
+  *实测说明：回环检测命中后执行高斯-牛顿位姿图优化，轨迹重新拉回闭环（中央绿色矩形轨迹严丝合缝）；右上角放大特写显示历史地图被 `rebuild_maps()` 重新投影后，墙面保持清晰单层，体素点数 204,340 点，偏航误差仅残存 0.05°。*
 
 - **实验 B（带漂移里程计，关闭回环）**：
   ```bash
@@ -381,7 +383,9 @@ def integrate(self, cloud: PointCloud, pose: Pose2D) -> int:
       --headless --disable-loop \
       --output outputs/chapter8/3d_without_loop
   ```
-  *预期现象*：关闭位姿图闭环优化。即使局部的单帧增量误差极小，随着距离积累，机器人在返回起点时出现明显的几何错位，地图产生双层墙面重影（Ghosting）。
+  **【实测 3D 点云建图与双层墙重影现象】**：
+  ![实验 B 实测 3D 点云地图与严重双层墙重影](/assets/images/hello-robot-task2/chapter8_3d_without_loop_map.png)
+  *实测说明：关闭回环后，长距离积分累积了 4.48° 偏航漂移，轨迹终点与起点错开 0.59m 缝隙；外立面与货架墙体明显分裂为两条平行重影墙（右上角特写放大中双层墙清晰可见），体素点数异常膨胀至 231,509 点（多出 2.7 万点伪影）。*
 
 - **实验 C（理想里程计对照，关闭人为漂移）**：
   ```bash
@@ -389,14 +393,20 @@ def integrate(self, cloud: PointCloud, pose: Pose2D) -> int:
       --headless --perfect-odometry \
       --output outputs/chapter8/3d_perfect_odom
   ```
-  *预期现象*：位姿由仿真真值直接提供，用于检验在零位姿误差下，点云预处理、外参标定与体素网格（Map3D）数据结构本身的极限性能。
+  **【实测理想里程计基准点云地图】**：
+  ![实验 C 实测理想里程计基准点云地图](/assets/images/hello-robot-task2/chapter8_3d_perfect_odom_map.png)
+  *实测说明：零位姿误差下的理论极限，矩形轨迹四角直角严整（蓝色轨迹），点云地图没有任何外参失准或重影瑕疵，体素点数最少仅 189,846 点，文件最紧凑（6.38 MB）。*
 
 ---
 
-### 2. 轨迹三联图对比分析
+### 2. 3D 点云地图与轨迹三联图全景对照
 
-我们将三组实验导出的 `_trajectory.csv` 文件绘制成平面投影对照图，直观展现漂移与回环优化的几何修正过程：
+我们将三组实验的真实三维点云地图与轨迹数据分别生成高保真横向三联画卷，直观对比消漂与闭环优化的全貌：
 
+#### （1）三组实验 3D 点云全景俯视对比（带角点 10x 局部放大特写）
+![三组对照实验实测 3D 点云地图全景对比](/assets/images/hello-robot-task2/chapter8_3d_control_experiments_triptych.png)
+
+#### （2）三组实验 2D 轨迹投影对比（平面漂移与闭环收敛）
 ![三组对照实验轨迹对比图](/assets/images/hello-robot-task2/chapter8_trajectory_comparison.png)
 
 - **实验 A（左）**：粉色细虚线为漂移里程计（Raw Odom），在返回起点时产生显著错位；深绿粗实线为回环优化后轨迹（Optimized），成功被拉回闭环起点，轨迹几何矩形极其规则；
