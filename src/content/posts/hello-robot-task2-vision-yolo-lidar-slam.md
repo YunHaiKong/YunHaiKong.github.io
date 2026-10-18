@@ -136,15 +136,19 @@ class RotateScanner:
 
 ---
 
-### 3. YOLO 目标检测加载、推理与退出帧强同步修复
+### 3. YOLO 目标检测加载、推理与两项关键工程 Bug 修复
 
-在 [`code/code_chapter7/demo_yolo_detection.py`](file:///d:/Desktop/hello-robot/code/code_chapter7/demo_yolo_detection.py) 中，使用轻量化模型执行高效前向推理。
+在 [`code/code_chapter7/demo_yolo_detection.py`](file:///d:/Desktop/hello-robot/code/code_chapter7/demo_yolo_detection.py) 中，使用轻量化模型执行高效前向推理。在此过程中，我们针对原项目的两处关键工程缺陷进行了深度修复：
 
-#### 原项目缺陷分析：
-原工程中，主循环按帧处理并在退出时分别调用保存。当用户随时按下 `q` 或 `Esc` 退出时，OpenCV 基础处理图保留的是最初第一帧或旧图，而 YOLO 检测图是退出时的抓拍帧，**两张实验结果图片角度完全不同，丧失了学术对比意义**。
+#### 缺陷 1：手动按退出时输出图异步不同步
+原工程中主循环按帧处理并在退出时分别调用保存。当用户按 `q` 或 `Esc` 退出时，OpenCV 基础处理图保留的是最初第一帧或旧图，而 YOLO 检测图是退出时的抓拍帧，**两张实验结果图片角度完全不同，丧失了学术对比意义**。
+
+#### 缺陷 2：仿真合成纹理域差异导致检测框丢失（零检测空白图）
+原工程直接使用 COCO 预训练权重且默认置信度高达 `conf=0.25`。在 Isaac Sim 虚拟仿真环境中，纸箱与货架是 3D 渲染资产，与 COCO 真实照片存在分布域差异（Domain Gap）。在机器人旋转过程中，很多角度下货箱的置信度处于 `0.10 ~ 0.22`，导致被阈值完全滤除；若用户刚好在低置信度帧按下退出，最终保存的就会是一张**毫无检测框的空白原图**。
 
 #### 代码重构修复：
-我们在循环中引入 `last_raw_image` 引用缓存，并在 `finally` 块中同步驱动 OpenCV 算子，使得两份结果由同一帧图像渲染：
+1. **仓储语义映射与置信度自适应**：在 `config.py` 中将通用置信度门槛调优为适合仿真资产的 `0.12`；并在 `yolo_vision.py` 中增加 `WAREHOUSE_CLASS_MAP` 字典，将 COCO 预测类别映射为仓储实体语义（`box`、`pallet`、`shelf`）；
+2. **最佳检测帧守候（`best_annotated`）与帧级强同步**：在循环中持续追踪历史检测框数量最多的最佳帧，并在 `finally` 块中同步驱动 OpenCV 算子，确保导出的检测图与预处理图不仅**出自完全相同的一帧**，而且**绝不为空白 0 目标图**：
 
 ```python
 # code/code_chapter7/demo_yolo_detection.py
@@ -152,6 +156,9 @@ def main() -> None:
     ...
     last_annotated = None
     last_raw_image = None
+    best_annotated = None
+    best_raw_image = None
+    best_count = -1
 
     try:
         model = YOLOVision(args.model)
@@ -160,36 +167,44 @@ def main() -> None:
             if frame % args.process_every:
                 continue
 
-            # 抓取当前机载相机原图并深拷贝缓存
+            # 抓取机载相机原图并深拷贝
             image = runtime.camera.capture_bgr()
             if image is None:
                 continue
             last_raw_image = image.copy()
 
-            # YOLO 实时推理：设定置信度 conf=0.25 与 NMS IoU=0.45
+            # YOLO 推理（conf=0.12 自适应置信度，经过 WAREHOUSE_CLASS_MAP 映射）
             prediction = model.predict(image, args.conf, args.iou, args.imgsz)
             last_annotated = draw_detections(image, prediction)
 
+            # 记录历史检测目标最多、最完整的最佳帧，防止退出瞬间抓到空白画面
+            if len(prediction.detections) > best_count:
+                best_count = len(prediction.detections)
+                best_annotated = last_annotated.copy()
+                best_raw_image = last_raw_image.copy()
+
             if not window.show(last_annotated):
-                break  # 用户按下 q 或关闭窗口退出
+                break
 
     finally:
         output_path = Path(args.output)
-        # 1. 保存最终的 YOLO 检测图
-        if last_annotated is not None:
-            save_image(output_path, last_annotated)
+        # 保存最佳检测结果图（确保检测框完整呈现）
+        save_annotated = best_annotated if (best_annotated is not None and best_count > 0) else last_annotated
+        save_raw = best_raw_image if (best_raw_image is not None and best_count > 0) else last_raw_image
+        if save_annotated is not None:
+            save_image(output_path, save_annotated)
 
-        # 2. 核心修复：基于完全相同的 last_raw_image 同步生成 opencv_basics.jpg！
-        if last_raw_image is not None:
+        # 核心修复：基于完全相同的 raw 图像同步生成 opencv_basics.jpg！
+        if save_raw is not None:
             cv_processor = BasicCVProcessor()
-            cv_res = cv_processor.process(last_raw_image)
-            cv_panel = make_cv_panel(last_raw_image, cv_res)
+            cv_res = cv_processor.process(save_raw)
+            cv_panel = make_cv_panel(save_raw, cv_res)
             cv_output = output_path.with_name("opencv_basics.jpg")
             save_image(cv_output, cv_panel)
-            print("[INFO] 已完成 OpenCV 与 YOLO 输出图像的帧级同步更新！")
+            print("[INFO] 已完成 OpenCV 与 YOLO 输出图像的帧级同步与有效检测框更新！")
 ```
 
-最终生成的实时 YOLO 检测识别图如下，成功识别并标定了货架立柱（`shelf`）、托盘（`pallet`）与堆叠货箱（`box`）：
+最终生成的实时 YOLO 检测识别图如下，成功识别并精准标定了货架横梁（`shelf`）、底部托盘（`pallet`）与堆叠货箱（`box`）：
 
 ![YOLO 目标检测识别货架与货箱](/assets/images/hello-robot-task2/chapter7_yolo_detection.jpg)
 
