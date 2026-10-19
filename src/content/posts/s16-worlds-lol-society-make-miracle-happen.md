@@ -3,7 +3,7 @@ title: 让奇迹发生：2026 英雄联盟 S16 全球总决赛 LPL 出征纪
 published: 2026-10-19
 description: 2026 英雄联盟全球总决赛（S16）战鼓擂响，LPL 四支代表战队正式出征北美！全景收录 AL、BLG、TES、iG 官方出征定妆海报，以流畅热血的笔触讲述草根登顶、重剑破浪、孤勇向前与涅槃重逢的传奇故事。在瑞士轮的强敌环伺之下，看 LPL 众将如何撕碎既定剧本，让奇迹在召唤师峡谷再次发生！
 tags: [英雄联盟, S16全球总决赛, LPL, AL, BLG, TES, iG, 让奇迹发生, 电竞]
-category: 英雄联盟电竞
+category: 生活随笔
 image: /assets/images/s16-worlds/al_s16_official.jpg
 draft: false
 ---
