@@ -2,7 +2,7 @@
 title: 在 Windows 7 孤岛上跑大模型智能体：一次“逆时代”的技术选型与认知复盘
 published: 2026-07-02
 description: 记录一次在完全断网的 Windows 7 专网环境中落地大模型智能体运行时的选型博弈、认知纠偏与工程反思。
-tags: [Win7, 智能体, 架构选型, 开源实战]
+tags: [智能体, Windows底层, 架构设计]
 category: 工程实战
 draft: false
 ---

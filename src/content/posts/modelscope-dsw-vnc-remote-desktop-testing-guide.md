@@ -3,7 +3,7 @@ title: 【云端实测】魔搭平台（ModelScope）DSW 配置 VNC 远程桌面
 published: 2026-10-16
 description: 基于 ModelScope 魔搭平台 DSW 实例，从 HTTP 端口透传、WebSocket 连通性验证到 XFCE4 桌面与 noVNC 服务的完整配置流程，包含 15 张实操步骤截图与避坑实测。
 image: /assets/images/modelscope-vnc/step_15.png
-tags: [VNC, NoVNC, ModelScope, 魔搭平台, 远程桌面, WebSocket, Linux运维]
+tags: [ModelScope, 远程开发, 工程实践]
 category: 技术架构
 draft: false
 ---

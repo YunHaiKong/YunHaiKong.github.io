@@ -2,7 +2,7 @@
 title: 穿越 4 个大版本：将现代 Python 智能体源码回移至 3.7 的实战笔记
 published: 2026-07-16
 description: 记录将强依赖 Python 3.11+ 的现代智能体代码库逆向回移到 Python 3.7 的全过程，包括语法降级规范、意外揪出上游跨平台真 Bug，以及离线依赖树闭环治理。
-tags: [Python, 源码回移, 跨平台, 离线打包]
+tags: [Python, 工程实践, 智能体]
 category: 工程实战
 draft: false
 ---

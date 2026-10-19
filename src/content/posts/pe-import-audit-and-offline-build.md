@@ -2,7 +2,7 @@
 title: 没有真机如何做质量保障？PE 二进制导入表静态审计与离线构建哲学
 published: 2026-07-30
 description: 记录在现代开发机上保障 Windows 7 交付物质量的工程体系：PE 导入表静态安全扫描、诚实分层验证准则，以及全新解压的离线回归测试。
-tags: [质量保障, PE分析, CI/CD, 离线交付]
+tags: [Windows底层, 工程实践, 架构设计]
 category: 工程实战
 draft: false
 ---

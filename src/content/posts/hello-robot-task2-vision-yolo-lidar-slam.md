@@ -2,7 +2,7 @@
 title: 【具身智能打卡】Task 2：机载视觉目标检测与双激光雷达 SLAM 全仓库建图优化实践
 published: 2026-10-18
 description: Datawhale Hello-Robot 具身智能学习打卡 Task 2：在 NVIDIA Isaac Sim 5.1 中深度实现智元 G2 机器人的机载视觉处理流水线、YOLO 目标检测与多激光雷达 SLAM 占据栅格建图；从底层源码剖析 OpenCV 8 阶段特征提取、自转巡检控制、同步捕获修复、双雷达外参融合、Bresenham 逆传感器模型、里程计偏航累积漂移根因消漂、以及 16 航点 S 型蛇形全仓库覆盖巡逻算法，彻底解决巷道未探索灰色杂波，实现 36m×75m 高清正交直角建图。
-tags: [具身智能, Isaac Sim, G2机器人, 激光SLAM, YOLO, 计算机视觉, 占据栅格建图, 机器人仿真]
+tags: [具身智能, Isaac Sim, 机器人开发]
 category: 具身智能与机器人
 draft: false
 ---

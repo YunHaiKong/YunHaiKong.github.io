@@ -2,7 +2,7 @@
 title: 驯服 CPython Embeddable：让 Python 3.7 优雅扎根裸机 Win7 的底层黑魔法
 published: 2026-07-09
 description: 深入剖析在裸机 Windows 7 上构建免安装绿色 Python 运行时中踩过的底层巨坑：UCRT 本地化、Tcl/Tk 解剖重建与控制台 exit code 120 幽灵。
-tags: [Python, Win7, UCRT, 系统底层, 编码]
+tags: [Python, Windows底层, 工程实践]
 category: 工程实战
 draft: false
 ---

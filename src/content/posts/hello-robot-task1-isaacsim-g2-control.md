@@ -3,7 +3,7 @@ title: 【具身智能打卡】Task 1：Isaac Sim 仿真环境搭建与 G2 机�
 published: 2026-10-16
 description: Datawhale Hello-Robot 具身智能学习打卡：在 NVIDIA Isaac Sim 5.1 物理仿真平台中完成智元 G2 轮式双臂机器人的环境搭建、模型加载与底盘/双臂运动控制实践，深度拆解其机械结构与运动学控制算法。
 image: /assets/images/hello-robot-task1/g2_isaacsim_front_view.png
-tags: [具身智能, Isaac Sim, G2机器人, 机器人仿真, 运动控制]
+tags: [具身智能, Isaac Sim, 机器人开发]
 category: 具身智能与机器人
 draft: false
 ---

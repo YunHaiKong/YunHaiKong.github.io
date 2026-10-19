@@ -2,7 +2,7 @@
 title: 【具身智能基建】ModelScope 魔搭云端搭建 Isaac Sim 5.1 与 IsaacLab 实战（避坑完全指南）
 published: 2026-10-16
 description: 针对魔搭（ModelScope）DSW 免费 A10 GPU 容器环境，系统化梳理 Isaac Sim 5.1 与 IsaacLab 2.3.1 的搭建路径，攻克国内镜像源失效、隔离构建冲突、Torch 版本回退等 13 个核心工程暗坑。
-tags: [Isaac Sim, IsaacLab, ModelScope, 魔搭平台, 机器人仿真, 踩坑排错]
+tags: [具身智能, Isaac Sim, ModelScope, 远程开发]
 category: 具身智能与机器人
 draft: false
 ---

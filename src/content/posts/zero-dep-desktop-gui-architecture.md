@@ -2,7 +2,7 @@
 title: 告别 Electron：如何用“原生 Web + 单进程服务”设计零依赖的桌面 GUI
 published: 2026-07-23
 description: 为什么在老旧的 Windows 7 上 Electron 和 PyQt 都是灾难？分享一套基于 Python 内置 HTTP 服务与原生现代前端的零依赖轻量 GUI 架构实践。
-tags: [架构设计, 桌面开发, 零依赖, Web技术]
+tags: [架构设计, 桌面开发, 工程实践]
 category: 工程实战
 draft: false
 ---
