@@ -58,14 +58,23 @@ draft: false
 
 ---
 
-## 📷 核心打卡截图：底盘移动规划与机械臂规划 RViz 对比
+## 📷 核心打卡截图：底盘移动规划（含 Isaac Sim 与 RViz 对比）与机械臂规划
 
-### 1. 底盘移动规划（第 10 章）RViz 效果截图
+### 1. 底盘移动规划（第 10 章）Isaac Sim 仿真场景与 RViz 实测截图
 
+#### （1）Isaac Sim 3D 物理孪生仿真场景大图
+![底盘移动规划：Isaac Sim 3D 物理仿真环境](/assets/images/hello-robot-task3/chapter10_isaac_sim_scene.png)
+*图 10-1：Isaac Sim 3D 真实物理孪生场景实测截图。展示了智元 G2 轮式双臂机器人本体位于 `room_1` 教学场景起点 $(-3.6, -3.3)$，三座橙红色静态长方体立柱障碍物（中央立柱、西北立柱与东南立柱）构成了狭窄走廊，蓝色长方体为周期性往复移动的动态障碍物。*
+
+#### （2）RViz 算法导航规划与动态避障实测截图
 | 动态避障过程（识别并绕行横穿走廊障碍） | 目标到达与闭环停靠（毫米级位姿对齐） |
 |:---:|:---:|
 | ![底盘动态避障](/assets/images/hello-robot-task3/chapter10_rviz_dynamic_avoidance.png) | ![底盘到达目标点](/assets/images/hello-robot-task3/chapter10_rviz_goal_reached.png) |
-| *图 10-1：黄色圆柱动态入侵前视窗口时，局部规划器在全局绿色路径外侧实时计算出深蓝色局部绕行弧线* | *图 10-2：机器人绕开大型立柱与移动障碍物，精准停靠目标位姿 $(3.60, 3.20, 1.57)$* |
+| *图 10-2：黄色圆柱动态入侵前视窗口时，局部规划器在全局绿色路径外侧实时计算出深蓝色局部绕行弧线* | *图 10-3：机器人绕开大型立柱与移动障碍物，精准停靠目标位姿 $(3.60, 3.20, 1.57)$* |
+
+#### （3）Isaac Sim 物理世界 vs RViz 算法世界全景对照
+![Isaac Sim 与 RViz 导航全景对比](/assets/images/hello-robot-task3/chapter10_isaac_sim_and_rviz_comparison.png)
+*图 10-4：第 10 章 Isaac Sim 物理世界（上图）与 RViz 算法闭环（下图左：动态避障绕行；下图右：终点精准停靠）全景对照画卷。*
 
 ---
 
