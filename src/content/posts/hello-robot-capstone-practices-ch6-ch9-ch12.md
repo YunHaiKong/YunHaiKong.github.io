@@ -258,7 +258,7 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 
 ## 🎬 拓展综合实践全流程录像与配音解说 (Capstone Video Demonstrations)
 
-为提供身临其境的具身智能算法运行直观展示，第六章、第九章与第十二章三大核心综合实践大作业均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。支持**本地高清播放器**与 **B站/YouTube 响应式嵌入播放器**双模式。
+为提供身临其境的具身智能算法运行直观展示，第六章、第九章与第十二章三大核心综合实践大作业均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。视频全部由 GitHub 仓库原生托管，开箱即播，无任何第三方平台依赖与广告。
 
 ### 1. 进阶综合大作业实践合集：移动抓放消漂、点云几何切面与全场景端到端闭环
 > 💡 **视频内容**：
@@ -266,20 +266,11 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 > - **第九章**：RGB-D 点云平截体滤波、局部法向量估计与 GraspGenX 多偏航角几何切面抓取打分（最优评分 0.795）。
 > - **第十二章**：9.5m 全向巡航导航、YOLOv8 动态检测（置信度 76.1%）、倾斜预抓姿态规划、提拉防掉落物理验证、双槽位托盘自主放置（误差 31.6mm / 37.7mm）。
 
-<!-- Bilibili 嵌入播放器 -->
-<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #0b0f19;">
-  <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7Xz&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-</div>
-
-<!-- 本地全高清播放器 -->
-<details open>
-<summary><b>📺 展开查看本地全高清播放器（无外部依赖）</b></summary>
-<div style="margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); background: #0b0f19;">
-  <video src="/assets/videos/video_capstone_practices_ch6_ch9_ch12.mp4" controls preload="metadata" style="width: 100%; max-height: 520px; display: block; border-radius: 12px;">
+<div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
+  <video src="/assets/videos/video_capstone_practices_ch6_ch9_ch12.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
-</details>
 
 #### 🎙️ 解说旁白与章节时间戳 (Narration Script)
 | 时间戳 | 综合大作业阶段 | 核心指标与控制参数 | 解说旁白摘要 |

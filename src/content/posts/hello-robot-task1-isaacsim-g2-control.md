@@ -82,25 +82,16 @@ $$
 
 ## 🎬 仿真实验全流程录像与配音解说 (Video Demonstrations)
 
-为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。支持**本地高清播放器**与 **B站/YouTube 响应式嵌入播放器**双模式。
+为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。视频全部由 GitHub 仓库原生托管，开箱即播，无任何第三方平台依赖与广告。
 
 ### 1. Task 1 核心综合演示：Swerve 底盘与 7-DOF 仿人双臂运动控制
 > 💡 **视频内容**：G2 机器人 46 自由度机构剖析、四轮独立转向 Swerve 全向机动（平移/自转/漂移）、7 自由度阻尼最小二乘法（DLS-IK）逆解收敛及五次多项式连续平滑关节轨迹追踪。
 
-<!-- Bilibili 嵌入播放器 -->
-<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #0b0f19;">
-  <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7Xz&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-</div>
-
-<!-- 本地全高清播放器 -->
-<details open>
-<summary><b>📺 展开查看本地全高清播放器（无外部依赖）</b></summary>
-<div style="margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); background: #0b0f19;">
-  <video src="/assets/videos/video_task1_kinematics_and_control.mp4" controls preload="metadata" style="width: 100%; max-height: 520px; display: block; border-radius: 12px;">
+<div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
+  <video src="/assets/videos/video_task1_kinematics_and_control.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
-</details>
 
 #### 🎙️ 解说旁白与章节时间戳 (Narration Script)
 | 时间戳 | 演示阶段 | 核心算法与监控指标 | 解说旁白摘要 |

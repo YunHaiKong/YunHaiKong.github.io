@@ -240,25 +240,16 @@ draft: false
 
 ## 🎬 仿真实验全流程录像与配音解说 (Video Demonstrations)
 
-为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。支持**本地高清播放器**与 **B站/YouTube 响应式嵌入播放器**双模式。
+为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。视频全部由 GitHub 仓库原生托管，开箱即播，无任何第三方平台依赖与广告。
 
 ### 1. Task 3 核心综合演示：Nav2 代价地图避障导航与 MoveIt 2 空间避障规划
 > 💡 **视频内容**：ROS 2 Nav2 全局膨胀代价地图与 A* 启发最优寻优、DWA 局部窗口实时避障重规划（亚 2cm 跟踪误差）、MoveIt 2 机械臂 7-DOF 配置空间（C-Space）双向 RRT-Connect 搜索、OctoMap 空间动态体素碰撞检测、Shortcut 贪婪剪枝与时间参数化平滑。
 
-<!-- Bilibili 嵌入播放器 -->
-<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #0b0f19;">
-  <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7Xz&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-</div>
-
-<!-- 本地全高清播放器 -->
-<details open>
-<summary><b>📺 展开查看本地全高清播放器（无外部依赖）</b></summary>
-<div style="margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); background: #0b0f19;">
-  <video src="/assets/videos/video_task3_navigation_and_manipulation.mp4" controls preload="metadata" style="width: 100%; max-height: 520px; display: block; border-radius: 12px;">
+<div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
+  <video src="/assets/videos/video_task3_navigation_and_manipulation.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
-</details>
 
 #### 🎙️ 解说旁白与章节时间戳 (Narration Script)
 | 时间戳 | 演示阶段 | 核心算法与监控指标 | 解说旁白摘要 |
