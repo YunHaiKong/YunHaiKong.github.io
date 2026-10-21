@@ -246,7 +246,7 @@ draft: false
 > 💡 **视频内容**：ROS 2 Nav2 全局膨胀代价地图与 A* 启发最优寻优、DWA 局部窗口实时避障重规划（亚 2cm 跟踪误差）、MoveIt 2 机械臂 7-DOF 配置空间（C-Space）双向 RRT-Connect 搜索、OctoMap 空间动态体素碰撞检测、Shortcut 贪婪剪枝与时间参数化平滑。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
-  <video src="/assets/videos/video_task3_navigation_and_manipulation.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
+  <video poster="/assets/videos/posters/video_task3_navigation_and_manipulation.jpg" src="/assets/videos/video_task3_navigation_and_manipulation.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
@@ -263,9 +263,9 @@ draft: false
 
 ### 2. 分章节专项演示视频
 - **第十章：基于 Nav2 的代价地图膨胀与全域动态避障导航**：
-  <video src="/assets/videos/ch10_nav2_navigation.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch10_nav2_navigation.jpg" src="/assets/videos/ch10_nav2_navigation.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 - **第十一章：基于 MoveIt 2 的高维 C 空间规划与 OctoMap 空间避障**：
-  <video src="/assets/videos/ch11_moveit2_planning.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch11_moveit2_planning.jpg" src="/assets/videos/ch11_moveit2_planning.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 
 ## 📝 总结与收获
 

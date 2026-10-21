@@ -88,7 +88,7 @@ $$
 > 💡 **视频内容**：G2 机器人 46 自由度机构剖析、四轮独立转向 Swerve 全向机动（平移/自转/漂移）、7 自由度阻尼最小二乘法（DLS-IK）逆解收敛及五次多项式连续平滑关节轨迹追踪。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
-  <video src="/assets/videos/video_task1_kinematics_and_control.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
+  <video poster="/assets/videos/posters/video_task1_kinematics_and_control.jpg" src="/assets/videos/video_task1_kinematics_and_control.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
@@ -105,9 +105,9 @@ $$
 
 ### 2. 分章节专项演示视频
 - **第四章：Swerve 底盘四轮独立转向全向控制**：
-  <video src="/assets/videos/ch04_swerve_control.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch04_swerve_control.jpg" src="/assets/videos/ch04_swerve_control.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 - **第五章：7-DOF 冗余机械臂正逆运动学与轨迹规划**：
-  <video src="/assets/videos/ch05_arm_fk_ik.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch05_arm_fk_ik.jpg" src="/assets/videos/ch05_arm_fk_ik.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 
 ## 📸 仿真实验运行效果与打卡成果
 

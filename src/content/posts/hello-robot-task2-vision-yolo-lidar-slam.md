@@ -677,7 +677,7 @@ def pose(self, frame: int) -> Pose2D:
 > 💡 **视频内容**：OpenCV 8 阶段图像降噪与特征流水线、YOLOv8 实时检测推理与置信度消融（0.15 最佳平衡）、36m×75m 大型物流仓库双雷达 360° 互补融合、外参刚体标定消除双墙伪影、长走廊 400m 里程计累积漂移根因与 G2O 位姿图回环检测纠偏。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
-  <video src="/assets/videos/video_task2_vision_and_slam.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
+  <video poster="/assets/videos/posters/video_task2_vision_and_slam.jpg" src="/assets/videos/video_task2_vision_and_slam.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
@@ -694,9 +694,9 @@ def pose(self, frame: int) -> Pose2D:
 
 ### 2. 分章节专项演示视频
 - **第七章：机载相机视觉处理流水线与 YOLO 目标检测**：
-  <video src="/assets/videos/ch07_vision_yolo.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch07_vision_yolo.jpg" src="/assets/videos/ch07_vision_yolo.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 - **第八章：双激光雷达仓库全域 2D/3D SLAM 建图与回环消漂**：
-  <video src="/assets/videos/ch08_lidar_slam.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch08_lidar_slam.jpg" src="/assets/videos/ch08_lidar_slam.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 
 ## 🏁 总结与后续展望
 

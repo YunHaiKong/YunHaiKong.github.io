@@ -267,7 +267,7 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 > - **第十二章**：9.5m 全向巡航导航、YOLOv8 动态检测（置信度 76.1%）、倾斜预抓姿态规划、提拉防掉落物理验证、双槽位托盘自主放置（误差 31.6mm / 37.7mm）。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
-  <video src="/assets/videos/video_capstone_practices_ch6_ch9_ch12.mp4" controls preload="metadata" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
+  <video poster="/assets/videos/posters/video_capstone_practices_ch6_ch9_ch12.jpg" src="/assets/videos/video_capstone_practices_ch6_ch9_ch12.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
     您的浏览器不支持 HTML5 视频播放，请升级浏览器。
   </video>
 </div>
@@ -284,11 +284,11 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 
 ### 2. 分章节专项综合演示视频
 - **第六章：移动底盘-机械臂协同抓放对比与基座消漂**：
-  <video src="/assets/videos/ch06_mobile_pick_place.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch06_mobile_pick_place.jpg" src="/assets/videos/ch06_mobile_pick_place.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 - **第九章：RGB-D 空间点云分割与几何切面抓取规划**：
-  <video src="/assets/videos/ch09_rgbd_grasp.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch09_rgbd_grasp.jpg" src="/assets/videos/ch09_rgbd_grasp.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 - **第十二章：全场景端到端自主移动操作 Mobile Manipulation 闭环**：
-  <video src="/assets/videos/ch12_mobile_manipulation.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+  <video poster="/assets/videos/posters/ch12_mobile_manipulation.jpg" src="/assets/videos/ch12_mobile_manipulation.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
 
 ## 🎯 总结与打卡寄语
 
