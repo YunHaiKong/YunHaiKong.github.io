@@ -77,6 +77,47 @@ $$
 
 ---
 
+
+---
+
+## 🎬 仿真实验全流程录像与配音解说 (Video Demonstrations)
+
+为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。支持**本地高清播放器**与 **B站/YouTube 响应式嵌入播放器**双模式。
+
+### 1. Task 1 核心综合演示：Swerve 底盘与 7-DOF 仿人双臂运动控制
+> 💡 **视频内容**：G2 机器人 46 自由度机构剖析、四轮独立转向 Swerve 全向机动（平移/自转/漂移）、7 自由度阻尼最小二乘法（DLS-IK）逆解收敛及五次多项式连续平滑关节轨迹追踪。
+
+<!-- Bilibili 嵌入播放器 -->
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #0b0f19;">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7Xz&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
+
+<!-- 本地全高清播放器 -->
+<details open>
+<summary><b>📺 展开查看本地全高清播放器（无外部依赖）</b></summary>
+<div style="margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); background: #0b0f19;">
+  <video src="/assets/videos/video_task1_kinematics_and_control.mp4" controls preload="metadata" style="width: 100%; max-height: 520px; display: block; border-radius: 12px;">
+    您的浏览器不支持 HTML5 视频播放，请升级浏览器。
+  </video>
+</div>
+</details>
+
+#### 🎙️ 解说旁白与章节时间戳 (Narration Script)
+| 时间戳 | 演示阶段 | 核心算法与监控指标 | 解说旁白摘要 |
+| :--- | :--- | :--- | :--- |
+| **00:00 - 00:12** | 构型拆解 | G2 轮式双臂人形构型 (46 DOF) | 欢迎观看 Task 1 综合讲解。在 Isaac Sim 中打通 G2 底盘与双臂运动学控制链路。 |
+| **00:12 - 00:24** | Swerve 底盘 | 四轮独立转向逆运动学解算 | 四套独立舵轮 Swerve 单元突破非完整约束，实时解算车轮偏角与轮速实现全向平移与自转。 |
+| **00:24 - 00:36** | 7-DOF 机械臂 | DLS-IK 阻尼最小二乘求解 | 针对奇异点与冗余度，基于旋量理论与雅可比阻尼逆解求解，末端残差优于 0.1 mm。 |
+| **00:36 - 00:46** | 平滑轨迹追踪 | 五次多项式 $C^2$ 连续插值 | 五次多项式关节轨迹规划，保证加速度平滑连续，杜绝物理仿真中的机械震荡与冲击。 |
+
+---
+
+### 2. 分章节专项演示视频
+- **第四章：Swerve 底盘四轮独立转向全向控制**：
+  <video src="/assets/videos/ch04_swerve_control.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+- **第五章：7-DOF 冗余机械臂正逆运动学与轨迹规划**：
+  <video src="/assets/videos/ch05_arm_fk_ik.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+
 ## 📸 仿真实验运行效果与打卡成果
 
 在 Isaac Sim 5.1.0 物理引擎中成功启动仿真后，G2 机器人准确执行了底盘全向速度序列与双臂关节同步运动：

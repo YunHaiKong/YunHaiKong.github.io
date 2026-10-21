@@ -254,6 +254,51 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 
 ---
 
+---
+
+## 🎬 拓展综合实践全流程录像与配音解说 (Capstone Video Demonstrations)
+
+为提供身临其境的具身智能算法运行直观展示，第六章、第九章与第十二章三大核心综合实践大作业均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。支持**本地高清播放器**与 **B站/YouTube 响应式嵌入播放器**双模式。
+
+### 1. 进阶综合大作业实践合集：移动抓放消漂、点云几何切面与全场景端到端闭环
+> 💡 **视频内容**：
+> - **第六章**：Joint 关节锁定模式 vs Delta 增量模式底盘消漂对比，基座漂移仅 1.88 mm，提升高度 0.1589 m。
+> - **第九章**：RGB-D 点云平截体滤波、局部法向量估计与 GraspGenX 多偏航角几何切面抓取打分（最优评分 0.795）。
+> - **第十二章**：9.5m 全向巡航导航、YOLOv8 动态检测（置信度 76.1%）、倾斜预抓姿态规划、提拉防掉落物理验证、双槽位托盘自主放置（误差 31.6mm / 37.7mm）。
+
+<!-- Bilibili 嵌入播放器 -->
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #0b0f19;">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7Xz&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
+
+<!-- 本地全高清播放器 -->
+<details open>
+<summary><b>📺 展开查看本地全高清播放器（无外部依赖）</b></summary>
+<div style="margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); background: #0b0f19;">
+  <video src="/assets/videos/video_capstone_practices_ch6_ch9_ch12.mp4" controls preload="metadata" style="width: 100%; max-height: 520px; display: block; border-radius: 12px;">
+    您的浏览器不支持 HTML5 视频播放，请升级浏览器。
+  </video>
+</div>
+</details>
+
+#### 🎙️ 解说旁白与章节时间戳 (Narration Script)
+| 时间戳 | 综合大作业阶段 | 核心指标与控制参数 | 解说旁白摘要 |
+| :--- | :--- | :--- | :--- |
+| **00:00 - 00:12** | 拓展实践概述 | Ch 6 + Ch 9 + Ch 12 综合集锦 | 欢迎观看综合拓展实践合集视频，汇集三大核心大作业，代表具身智能在复杂物理环境中的最高落地水平。 |
+| **00:12 - 00:24** | 第六章：底盘消漂 | 基座漂移 RMSE 1.88mm，提拉 0.1589m | Joint 模式施加零速约束，将抓取瞬间底盘滑移从十余毫米压低至 1.88 mm，工件平稳提拉不掉落。 |
+| **00:24 - 00:36** | 第九章：点云几何抓取 | 深度反投影 + 法向量切面得分 0.795 | 点云平截体滤波去噪，表面法向量圆周采样抓取位姿，几何切面碰撞测试与力封闭验证达成稳定抓放。 |
+| **00:36 - 00:48** | 第十二章：端到端闭环 | 9.5m 巡航 + 倾斜抓取 + 盘载双槽归位 | 9.5m 巡航、YOLO 锁定目标、倾斜预抓提拉、带载转运并分别以 31.6mm 与 37.7mm 误差入槽，大闭环完美达成。 |
+
+---
+
+### 2. 分章节专项综合演示视频
+- **第六章：移动底盘-机械臂协同抓放对比与基座消漂**：
+  <video src="/assets/videos/ch06_mobile_pick_place.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+- **第九章：RGB-D 空间点云分割与几何切面抓取规划**：
+  <video src="/assets/videos/ch09_rgbd_grasp.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+- **第十二章：全场景端到端自主移动操作 Mobile Manipulation 闭环**：
+  <video src="/assets/videos/ch12_mobile_manipulation.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+
 ## 🎯 总结与打卡寄语
 
 至此，Datawhale《Hello-Robot》开源教程中的**所有理论任务章节（第4、5、7、8、10、11章）与全部三大高难度综合实践拓展章节（第6、9、12章）已 100% 全部完成、并在真实物理引擎中全部闭环验证通过**！

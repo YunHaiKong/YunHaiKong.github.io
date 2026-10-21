@@ -667,6 +667,46 @@ def pose(self, frame: int) -> Pose2D:
 
 ---
 
+---
+
+## 🎬 仿真实验全流程录像与配音解说 (Video Demonstrations)
+
+为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。支持**本地高清播放器**与 **B站/YouTube 响应式嵌入播放器**双模式。
+
+### 1. Task 2 核心综合演示：机载视觉处理、YOLO 目标检测与双激光 SLAM 全仓库建图
+> 💡 **视频内容**：OpenCV 8 阶段图像降噪与特征流水线、YOLOv8 实时检测推理与置信度消融（0.15 最佳平衡）、36m×75m 大型物流仓库双雷达 360° 互补融合、外参刚体标定消除双墙伪影、长走廊 400m 里程计累积漂移根因与 G2O 位姿图回环检测纠偏。
+
+<!-- Bilibili 嵌入播放器 -->
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #0b0f19;">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7Xz&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
+
+<!-- 本地全高清播放器 -->
+<details open>
+<summary><b>📺 展开查看本地全高清播放器（无外部依赖）</b></summary>
+<div style="margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); background: #0b0f19;">
+  <video src="/assets/videos/video_task2_vision_and_slam.mp4" controls preload="metadata" style="width: 100%; max-height: 520px; display: block; border-radius: 12px;">
+    您的浏览器不支持 HTML5 视频播放，请升级浏览器。
+  </video>
+</div>
+</details>
+
+#### 🎙️ 解说旁白与章节时间戳 (Narration Script)
+| 时间戳 | 演示阶段 | 核心算法与监控指标 | 解说旁白摘要 |
+| :--- | :--- | :--- | :--- |
+| **00:00 - 00:12** | 视觉管线 | OpenCV 8 阶段滤波与 Canny 边缘 | 欢迎观看 Task 2 综合讲解。系统首先通过 OpenCV 完成图像去噪、边缘提取与颜色分割。 |
+| **00:12 - 00:24** | YOLOv8 推理 | 55 FPS 实时推理，置信度消融 | 轻量级 YOLOv8 在 0.15 阈值下实现工件 100% 召回与零背景虚警，反投影为三维物理坐标。 |
+| **00:24 - 00:36** | 双雷达融合 | 36m×75m 全景 360° 扫描覆盖 | 针对超大型物流仓库，对角双雷达消除单雷达死角，刚体变换校正彻底杜绝双墙伪影。 |
+| **00:36 - 00:46** | G2O 回环纠偏 | 14 处回环闭合约束，漂移清零 | 引入位姿图优化消除 400m 长走廊累积漂移，生成边缘清晰锐利的厘米级全局高精地图。 |
+
+---
+
+### 2. 分章节专项演示视频
+- **第七章：机载相机视觉处理流水线与 YOLO 目标检测**：
+  <video src="/assets/videos/ch07_vision_yolo.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+- **第八章：双激光雷达仓库全域 2D/3D SLAM 建图与回环消漂**：
+  <video src="/assets/videos/ch08_lidar_slam.mp4" controls preload="metadata" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+
 ## 🏁 总结与后续展望
 
 通过 Task 2 的全栈深入攻关，我们系统性完成了从“视觉目标识别”到“激光 SLAM 全局建图”的技术跃迁：
