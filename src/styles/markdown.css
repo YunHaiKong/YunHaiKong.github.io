@@ -112,10 +112,157 @@
 
     }
 
+    .katex-display {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 0.15em;
+    }
+
+    .katex-display > .katex {
+        display: block;
+        width: max-content;
+        min-width: 100%;
+        text-align: center;
+    }
+
     .katex-display-container {
         max-width: 100%;
         overflow-x: auto;
         margin: 1em 0;
     }
-    
+
+    :not(pre) > code {
+        overflow-wrap: break-word;
+    }
+
+    .hr-table-scroll {
+        @apply my-4 max-w-full overflow-x-auto rounded-xl border border-[var(--line-divider)];
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .hr-table-scroll table {
+        @apply my-0;
+    }
+
+    @media (max-width: 768px) {
+        .hr-table-scroll.is-wide table {
+            min-width: 40rem;
+        }
+    }
+
+    .hr-video-block {
+        @apply my-4 rounded-xl overflow-hidden bg-[#0b0f19];
+    }
+
+    .hr-chapters {
+        @apply mt-0 rounded-none border-0 border-t border-white/10 bg-white/[0.04];
+    }
+
+    .hr-chapters-head {
+        @apply flex items-center justify-between gap-3 px-3 py-2 text-xs text-white/55 border-b border-white/10;
+    }
+
+    .hr-chapters-count {
+        @apply tabular-nums;
+    }
+
+    .hr-chapters-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2;
+    }
+
+    .hr-chapter {
+        @apply flex items-center gap-2 text-left px-3 py-2 text-sm transition text-white/75 border-b border-white/10;
+        &:hover {
+            @apply bg-white/10 text-white;
+        }
+    }
+
+    .hr-chapter.is-active {
+        @apply bg-white/[0.14] text-white font-medium;
+        box-shadow: inset 2px 0 0 var(--primary);
+    }
+
+    .hr-chapter-time {
+        @apply shrink-0 font-mono text-xs tabular-nums text-white/45;
+    }
+
+    .hr-chapter.is-active .hr-chapter-time {
+        @apply text-white/80;
+    }
+
+    .hr-transcript {
+        @apply mt-0 rounded-none border-0 border-t border-white/10 bg-white/[0.04] text-sm text-white/70;
+    }
+
+    .hr-transcript summary {
+        @apply flex flex-wrap items-center justify-between gap-2 px-3 py-2 cursor-pointer text-white/65;
+    }
+
+    .hr-transcript summary a {
+        @apply text-white/80 no-underline underline-offset-2 hover:underline;
+    }
+
+    .hr-transcript-hint {
+        @apply text-xs font-normal text-white/45;
+    }
+
+    .hr-transcript-body {
+        @apply px-3 pb-3 border-t border-white/10;
+    }
+
+    .hr-transcript-row {
+        @apply grid items-start gap-2 text-white/70 my-2;
+        grid-template-columns: 3.25rem minmax(0, 1fr);
+        line-height: 1.7;
+    }
+
+    .hr-transcript-row .hr-ts {
+        @apply font-mono text-xs tabular-nums text-white/60 bg-transparent border-0 p-0 mt-1 text-left cursor-pointer hover:text-white;
+    }
+
+    .hr-transcript-body .hr-transcript-row:last-child {
+        @apply mb-0;
+    }
+
+    .mermaid-diagram {
+        @apply my-4 rounded-xl border border-[var(--line-divider)] bg-[var(--card-bg)] p-4 overflow-x-auto;
+    }
+
+    .mermaid-diagram svg {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .custom-md .expressive-code,
+    .custom-md .expressive-code .frame {
+        max-width: 100%;
+    }
+
+    .mermaid-source {
+        @apply mt-2 text-sm text-black/50 dark:text-white/50;
+
+        summary {
+            @apply cursor-pointer select-none;
+        }
+
+        .expressive-code {
+            @apply mt-2;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .mermaid-diagram {
+            @apply p-2;
+        }
+
+        .mermaid-diagram svg {
+            max-width: none;
+        }
+    }
+
 }

@@ -85,7 +85,7 @@ $$
 为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。视频全部由 GitHub 仓库原生托管，开箱即播，无任何第三方平台依赖与广告。
 
 ### 1. Task 1 核心综合演示：Swerve 底盘与 7-DOF 仿人双臂运动控制
-> 💡 **视频内容**：G2 机器人 46 自由度机构剖析、四轮独立转向 Swerve 全向机动（平移/自转/漂移）、7 自由度阻尼最小二乘法（DLS-IK）逆解收敛及五次多项式连续平滑关节轨迹追踪。
+> 💡 **视频内容**：G2 机器人 46 自由度机构、四轮独立转向 Swerve 全向机动、7 自由度机械臂正逆运动学与 DLS 迭代收敛；关键参数包括 0.070 m 轮半径、2 mm 位置容差与 3.1416 rad/s 关节限速。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
   <video poster="/assets/videos/posters/video_task1_kinematics_and_control.jpg" src="/assets/videos/video_task1_kinematics_and_control.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
@@ -93,21 +93,23 @@ $$
   </video>
 </div>
 
-#### 🎙️ 解说旁白与章节时间戳 (Narration Script)
-| 时间戳 | 演示阶段 | 核心算法与监控指标 | 解说旁白摘要 |
-| :--- | :--- | :--- | :--- |
-| **00:00 - 00:12** | 构型拆解 | G2 轮式双臂人形构型 (46 DOF) | 欢迎观看 Task 1 综合讲解。在 Isaac Sim 中打通 G2 底盘与双臂运动学控制链路。 |
-| **00:12 - 00:24** | Swerve 底盘 | 四轮独立转向逆运动学解算 | 四套独立舵轮 Swerve 单元突破非完整约束，实时解算车轮偏角与轮速实现全向平移与自转。 |
-| **00:24 - 00:36** | 7-DOF 机械臂 | DLS-IK 阻尼最小二乘求解 | 针对奇异点与冗余度，基于旋量理论与雅可比阻尼逆解求解，末端残差优于 0.1 mm。 |
-| **00:36 - 00:46** | 平滑轨迹追踪 | 五次多项式 $C^2$ 连续插值 | 五次多项式关节轨迹规划，保证加速度平滑连续，杜绝物理仿真中的机械震荡与冲击。 |
+> 🎧 **播放器增强**：本页 3 条视频均为**画面内嵌中文字幕**，并提供 **VTT 字幕文件**、**可点击章节导航** 与 **完整文字稿**，移动端自动使用 720p 视频源；章节时间轴以实际配音为准。
 
 ---
 
 ### 2. 分章节专项演示视频
-- **第四章：Swerve 底盘四轮独立转向全向控制**：
+**第四章：Swerve 底盘四轮独立转向全向控制**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch04_swerve_control.jpg" src="/assets/videos/ch04_swerve_control.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
-- **第五章：7-DOF 冗余机械臂正逆运动学与轨迹规划**：
+</div>
+
+**第五章：7-DOF 冗余机械臂正逆运动学与轨迹规划**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch05_arm_fk_ik.jpg" src="/assets/videos/ch05_arm_fk_ik.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+</div>
+
 
 ## 📸 仿真实验运行效果与打卡成果
 

@@ -1,0 +1,173 @@
+{
+ "id": "ch06_mobile_pick_place",
+ "title": "移动抓取：停稳之后",
+ "shortTitle": "移动抓取：停稳之后",
+ "chapterLabel": "第 06 章 · 移动抓取",
+ "description": "底盘停靠漂移、机械臂抓取与放置的真实闭环。",
+ "durationSec": 127.133,
+ "durationISO": "PT2M7S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch06_mobile_pick_place.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/ch06_mobile_pick_place.mp4",
+ "videoPath": "/assets/videos/ch06_mobile_pick_place.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/ch06_mobile_pick_place.mp4",
+ "mobilePath": "/assets/videos/720/ch06_mobile_pick_place.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 12.733,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 12.733,
+   "end": 27.8,
+   "seconds": 13,
+   "clock": "00:13",
+   "title": "真实操作 · 移动抓取",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 27.8,
+   "end": 43.667,
+   "seconds": 28,
+   "clock": "00:28",
+   "title": "任务读数",
+   "type": "media"
+  },
+  {
+   "index": 3,
+   "start": 43.667,
+   "end": 61.8,
+   "seconds": 44,
+   "clock": "00:44",
+   "title": "实验 · 停靠漂移",
+   "type": "chart"
+  },
+  {
+   "index": 4,
+   "start": 61.8,
+   "end": 77.6,
+   "seconds": 62,
+   "clock": "01:02",
+   "title": "实验 · 抬升验证",
+   "type": "chart"
+  },
+  {
+   "index": 5,
+   "start": 77.6,
+   "end": 94.367,
+   "seconds": 78,
+   "clock": "01:18",
+   "title": "两种控制模式",
+   "type": "image"
+  },
+  {
+   "index": 6,
+   "start": 94.367,
+   "end": 114.167,
+   "seconds": 94,
+   "clock": "01:34",
+   "title": "实现 · 阶段化任务",
+   "type": "code"
+  },
+  {
+   "index": 7,
+   "start": 114.167,
+   "end": 127.134,
+   "seconds": 114,
+   "clock": "01:54",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 12.733,
+   "section": "",
+   "narration": "移动抓取比固定机械臂多了一个变量：底盘。导航停稳以后，底盘还在不在动，直接决定夹爪能不能对准红块。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 12.733,
+   "end": 27.8,
+   "section": "真实操作 · 移动抓取",
+   "narration": "这是 Delta 末端增量模式的完整记录。机器人先导航到桌边，再抬起右臂，对准红色方块，下探、夹紧、抬升，最后送入蓝色盒子。"
+  },
+  {
+   "index": 2,
+   "type": "media",
+   "start": 27.8,
+   "end": 43.667,
+   "section": "任务读数",
+   "narration": "整个任务 34.2 秒，末端走过的 TCP 路径约 2.93 米。真正关键的是停靠后的底盘漂移：它必须小于 2 毫米，否则夹爪会在下探时蹭到方块。"
+  },
+  {
+   "index": 3,
+   "type": "chart",
+   "start": 43.667,
+   "end": 61.8,
+   "section": "实验 · 停靠漂移",
+   "narration": "这张图是两种控制模式的底盘漂移。Delta 模式最终 1.88 毫米，关节增量模式 1.90 毫米，都在 2 毫米门限以内；整个搬运过程中漂移缓慢变化，没有突跳，最终也没有越过门限。"
+  },
+  {
+   "index": 4,
+   "type": "chart",
+   "start": 61.8,
+   "end": 77.6,
+   "section": "实验 · 抬升验证",
+   "narration": "这张图把红块和末端都换算成相对起始高度。夹爪先下降约 46 厘米接触红块，再带着红块抬升；抬升阶段结束时，红块比初始高 15.9 厘米。"
+  },
+  {
+   "index": 5,
+   "type": "image",
+   "start": 77.6,
+   "end": 94.367,
+   "section": "两种控制模式",
+   "narration": "把两种模式的完整轨迹放在一起，差异没有想象中大。Delta 和 Joint 的 TCP 路径只差约 6 毫米，抬升高度都在 15.9 厘米，说明任务层面两条控制链都能闭环。"
+  },
+  {
+   "index": 6,
+   "type": "code",
+   "start": 94.367,
+   "end": 114.167,
+   "section": "实现 · 阶段化任务",
+   "narration": "任务代码把抓取拆成明确阶段：收臂、预抓取、下探、闭合、抬升、转移、下放、释放。每个阶段都写入遥测，失败时能定位到具体动作，而不是只看到一个成功或失败。"
+  },
+  {
+   "index": 7,
+   "type": "outro",
+   "start": 114.167,
+   "end": 127.134,
+   "section": "",
+   "narration": "移动抓取的关键不是‘抓得快’，而是‘停得稳、看得准、放得下’。下一章，我们把这双眼睛换成实时目标检测。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "移动抓取：停稳之后",
+  "description": "底盘停靠漂移、机械臂抓取与放置的真实闭环。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/ch06_mobile_pick_place.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT2M7S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/ch06_mobile_pick_place.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

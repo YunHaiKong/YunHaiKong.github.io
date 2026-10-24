@@ -1,0 +1,207 @@
+{
+ "id": "video_task2_vision_and_slam",
+ "title": "视觉与 SLAM",
+ "shortTitle": "视觉与 SLAM",
+ "chapterLabel": "任务二 · 视觉与 SLAM",
+ "description": "先看见前方是什么，再记住自己走过哪里。",
+ "durationSec": 138.365,
+ "durationISO": "PT2M18S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_task2_vision_and_slam.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/video_task2_vision_and_slam.mp4",
+ "videoPath": "/assets/videos/video_task2_vision_and_slam.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/video_task2_vision_and_slam.mp4",
+ "mobilePath": "/assets/videos/720/video_task2_vision_and_slam.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 11.3,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 11.3,
+   "end": 24.133,
+   "seconds": 11,
+   "clock": "00:11",
+   "title": "真实操作 · 视觉检测",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 24.133,
+   "end": 37.766,
+   "seconds": 24,
+   "clock": "00:24",
+   "title": "实验 · 置信度阈值",
+   "type": "image"
+  },
+  {
+   "index": 3,
+   "start": 37.767,
+   "end": 51.0,
+   "seconds": 38,
+   "clock": "00:38",
+   "title": "真实操作 · 双雷达建图",
+   "type": "media"
+  },
+  {
+   "index": 4,
+   "start": 51.0,
+   "end": 67.633,
+   "seconds": 51,
+   "clock": "00:51",
+   "title": "实验 · 闭环轨迹",
+   "type": "path"
+  },
+  {
+   "index": 5,
+   "start": 67.633,
+   "end": 83.033,
+   "seconds": 68,
+   "clock": "01:08",
+   "title": "建图结果 · 2D 地图回放",
+   "type": "media"
+  },
+  {
+   "index": 6,
+   "start": 83.033,
+   "end": 95.466,
+   "seconds": 83,
+   "clock": "01:23",
+   "title": "建图结果 · 3D 点云",
+   "type": "pointcloud"
+  },
+  {
+   "index": 7,
+   "start": 95.467,
+   "end": 112.467,
+   "seconds": 95,
+   "clock": "01:35",
+   "title": "建图结果 · 点云俯视",
+   "type": "pointcloud"
+  },
+  {
+   "index": 8,
+   "start": 112.467,
+   "end": 126.4,
+   "seconds": 112,
+   "clock": "01:52",
+   "title": "任务二读数",
+   "type": "metrics"
+  },
+  {
+   "index": 9,
+   "start": 126.4,
+   "end": 138.367,
+   "seconds": 126,
+   "clock": "02:06",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 11.3,
+   "section": "",
+   "narration": "任务二把视觉检测和激光建图放在同一条链上：检测回答‘前面是什么’，SLAM 回答‘我在哪、周围是什么’。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 11.3,
+   "end": 24.133,
+   "section": "真实操作 · 视觉检测",
+   "narration": "先看检测。YOLO 在仓库货架前实时输出边界框，四个箱子被稳定框住；置信度和 IoU 阈值决定哪些框留下。"
+  },
+  {
+   "index": 2,
+   "type": "image",
+   "start": 24.133,
+   "end": 37.766,
+   "section": "实验 · 置信度阈值",
+   "narration": "阈值实验把召回和误检的取舍摆到台面上。低阈值框更多，高阈值更干净；没有一套参数适合所有场景，只能按任务调。"
+  },
+  {
+   "index": 3,
+   "type": "media",
+   "start": 37.767,
+   "end": 51.0,
+   "section": "真实操作 · 双雷达建图",
+   "narration": "再看建图。双雷达扫到墙面和货架，机器人一边走一边把点云按位姿叠起来；转弯时的扫描重叠，是闭环约束的来源。"
+  },
+  {
+   "index": 4,
+   "type": "path",
+   "start": 51.0,
+   "end": 67.633,
+   "section": "实验 · 闭环轨迹",
+   "narration": "轨迹对比显示闭环的作用：起终点缺口从 0.591 米降到 0.477 米，末端偏航从 4.48 度降到 0.05 度。位置改善有限，姿态一致性提升明显。"
+  },
+  {
+   "index": 5,
+   "type": "media",
+   "start": 67.633,
+   "end": 83.033,
+   "section": "建图结果 · 2D 地图回放",
+   "narration": "把二维地图抬起来旋转，白色是自由空间，深色是墙体和货架；栅格边缘的锯齿来自 5 厘米量化。地图最终要交给导航器查询，而不是给人看。"
+  },
+  {
+   "index": 6,
+   "type": "pointcloud",
+   "start": 83.033,
+   "end": 95.466,
+   "section": "建图结果 · 3D 点云",
+   "narration": "最终点云有 20 多万个点，覆盖 54.4 乘 68.35 米。它不是渲染出来的背景，而是雷达实测数据的累积。"
+  },
+  {
+   "index": 7,
+   "type": "pointcloud",
+   "start": 95.467,
+   "end": 112.467,
+   "section": "建图结果 · 点云俯视",
+   "narration": "把同一批点云从正上方压扁，货架排成亮带，外墙围出边界；高度颜色仍保留，地面、货架和顶部结构一眼可分。二维地图和三维点云，来自同一批观测。"
+  },
+  {
+   "index": 8,
+   "type": "metrics",
+   "start": 112.467,
+   "end": 126.4,
+   "section": "任务二读数",
+   "narration": "把视觉和建图的数字放在一起：四个检测框、71 个关键帧、20 多万个点、0.477 米的闭环缺口。它们分别回答‘看到什么’和‘走过哪里’。"
+  },
+  {
+   "index": 9,
+   "type": "outro",
+   "start": 126.4,
+   "end": 138.367,
+   "section": "",
+   "narration": "能看见、能定位，下一步才是走过去和伸出手。任务三把 Nav2 与 MoveIt2 接到同一条任务链上。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "视觉与 SLAM",
+  "description": "先看见前方是什么，再记住自己走过哪里。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/video_task2_vision_and_slam.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT2M18S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/video_task2_vision_and_slam.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

@@ -1,0 +1,207 @@
+{
+ "id": "ch08_lidar_slam",
+ "title": "激光雷达 SLAM",
+ "shortTitle": "激光雷达 SLAM",
+ "chapterLabel": "第 08 章 · 激光雷达 SLAM",
+ "description": "双雷达与轮式里程计，在仓库里建出一张 2D 地图。",
+ "durationSec": 156.932,
+ "durationISO": "PT2M37S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch08_lidar_slam.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/ch08_lidar_slam.mp4",
+ "videoPath": "/assets/videos/ch08_lidar_slam.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/ch08_lidar_slam.mp4",
+ "mobilePath": "/assets/videos/720/ch08_lidar_slam.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 11.633,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 11.633,
+   "end": 27.866,
+   "seconds": 12,
+   "clock": "00:12",
+   "title": "真实操作 · 建图巡航",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 27.867,
+   "end": 45.267,
+   "seconds": 28,
+   "clock": "00:28",
+   "title": "双雷达融合",
+   "type": "media"
+  },
+  {
+   "index": 3,
+   "start": 45.267,
+   "end": 60.767,
+   "seconds": 45,
+   "clock": "00:45",
+   "title": "建图结果 · 2D 占据栅格",
+   "type": "image"
+  },
+  {
+   "index": 4,
+   "start": 60.767,
+   "end": 78.367,
+   "seconds": 61,
+   "clock": "01:01",
+   "title": "建图结果 · 占据地图回放",
+   "type": "media"
+  },
+  {
+   "index": 5,
+   "start": 78.367,
+   "end": 96.134,
+   "seconds": 78,
+   "clock": "01:18",
+   "title": "实验 · 闭环优化",
+   "type": "path"
+  },
+  {
+   "index": 6,
+   "start": 96.133,
+   "end": 110.966,
+   "seconds": 96,
+   "clock": "01:36",
+   "title": "建图结果 · 3D 点云",
+   "type": "pointcloud"
+  },
+  {
+   "index": 7,
+   "start": 110.967,
+   "end": 127.867,
+   "seconds": 111,
+   "clock": "01:51",
+   "title": "实现 · 占据栅格更新",
+   "type": "code"
+  },
+  {
+   "index": 8,
+   "start": 127.867,
+   "end": 143.5,
+   "seconds": 128,
+   "clock": "02:08",
+   "title": "建图结果",
+   "type": "metrics"
+  },
+  {
+   "index": 9,
+   "start": 143.5,
+   "end": 156.933,
+   "seconds": 144,
+   "clock": "02:24",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 11.633,
+   "section": "",
+   "narration": "这一章让机器人闭上眼，只靠激光雷达和轮式里程计，在仓库里走一圈，再把走过的空间拼成一张地图。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 11.633,
+   "end": 27.866,
+   "section": "真实操作 · 建图巡航",
+   "narration": "画面里的白色扇形是激光雷达扫到的墙面和货架。机器人一边走，一边把每一帧点云按里程计位姿叠到地图上；紫色点越密，说明那里被反复观测。"
+  },
+  {
+   "index": 2,
+   "type": "media",
+   "start": 27.867,
+   "end": 45.267,
+   "section": "双雷达融合",
+   "narration": "前后两台雷达负责不同方向，减少转弯时的盲区。每帧扫描先转换到统一坐标系，再写入占据栅格；分辨率 5 厘米，最终地图覆盖 54.4 乘 68.35 米。"
+  },
+  {
+   "index": 3,
+   "type": "image",
+   "start": 45.267,
+   "end": 60.767,
+   "section": "建图结果 · 2D 占据栅格",
+   "narration": "这是最终的二值占据地图。白色是可通行区域，黑色是障碍，灰色是未知。地图不是一张照片，它是机器人后续做全局规划的坐标底图。"
+  },
+  {
+   "index": 4,
+   "type": "media",
+   "start": 60.767,
+   "end": 78.367,
+   "section": "建图结果 · 占据地图回放",
+   "narration": "把地图从俯视角度抬起来旋转，白色是建图走过的自由空间，深色是墙体和货架，边缘的锯齿来自 5 厘米栅格量化。它不是一张照片，而是导航器反复查询的坐标底图。"
+  },
+  {
+   "index": 5,
+   "type": "path",
+   "start": 78.367,
+   "end": 96.134,
+   "section": "实验 · 闭环优化",
+   "narration": "回到轨迹。橙色是没有闭环优化的结果，青色是加入闭环约束后的结果。两者的起终点缺口分别是 0.591 米和 0.477 米，末端偏航从 4.48 度降到 0.05 度。"
+  },
+  {
+   "index": 6,
+   "type": "pointcloud",
+   "start": 96.133,
+   "end": 110.966,
+   "section": "建图结果 · 3D 点云",
+   "narration": "把二维地图抬到三维，就是这 20 多万个点。颜色表示高度，货架、墙面和地面的结构都在；它不是美术模型，而是实验输出的真实点云。"
+  },
+  {
+   "index": 7,
+   "type": "code",
+   "start": 110.967,
+   "end": 127.867,
+   "section": "实现 · 占据栅格更新",
+   "narration": "占据栅格的核心是一次射线更新。对每个激光点，从传感器原点沿射线做 Bresenham 遍历：经过的格子降低占据概率，命中点提高占据概率，未观测区域保持未知。"
+  },
+  {
+   "index": 8,
+   "type": "metrics",
+   "start": 127.867,
+   "end": 143.5,
+   "section": "建图结果",
+   "narration": "这些数字构成一张可用的地图：5 厘米分辨率、71 个关键帧、20 多万个点。对导航来说，地图的价值不在好看，而在每一次规划都能落到同一套坐标里。"
+  },
+  {
+   "index": 9,
+   "type": "outro",
+   "start": 143.5,
+   "end": 156.933,
+   "section": "",
+   "narration": "有了地图，机器人才能规划；有了位姿，地图才有意义。下一章，我们让机械臂用 RGB-D 相机看懂桌面上的物体。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "激光雷达 SLAM",
+  "description": "双雷达与轮式里程计，在仓库里建出一张 2D 地图。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/ch08_lidar_slam.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT2M37S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/ch08_lidar_slam.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

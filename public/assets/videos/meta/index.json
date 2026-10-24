@@ -1,0 +1,1143 @@
+{
+ "site": "https://YunHaiKong.github.io",
+ "videos": [
+  {
+   "id": "ch04_swerve_control",
+   "title": "全向底盘运动控制",
+   "durationSec": 107.4,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch04_swerve_control.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 14.233,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 14.233,
+     "end": 30.333,
+     "seconds": 14,
+     "clock": "00:14",
+     "title": "真实操作 · 全向底盘",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 30.333,
+     "end": 46.2,
+     "seconds": 30,
+     "clock": "00:30",
+     "title": "真实操作 · 复合运动",
+     "type": "media"
+    },
+    {
+     "index": 3,
+     "start": 46.2,
+     "end": 62.167,
+     "seconds": 46,
+     "clock": "00:46",
+     "title": "实现 · 轮组逆运动学",
+     "type": "code"
+    },
+    {
+     "index": 4,
+     "start": 62.167,
+     "end": 78.8,
+     "seconds": 62,
+     "clock": "01:02",
+     "title": "底盘能力边界",
+     "type": "metrics"
+    },
+    {
+     "index": 5,
+     "start": 78.8,
+     "end": 93.567,
+     "seconds": 79,
+     "clock": "01:19",
+     "title": "连续动作 · 实拍",
+     "type": "media"
+    },
+    {
+     "index": 6,
+     "start": 93.567,
+     "end": 107.4,
+     "seconds": 94,
+     "clock": "01:34",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch05_arm_fk_ik",
+   "title": "机械臂正逆运动学",
+   "durationSec": 120.467,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch05_arm_fk_ik.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch05_arm_fk_ik.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch05_arm_fk_ik.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 15.867,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 15.867,
+     "end": 31.134,
+     "seconds": 16,
+     "clock": "00:16",
+     "title": "真实操作 · 抓取序列",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 31.133,
+     "end": 45.8,
+     "seconds": 31,
+     "clock": "00:31",
+     "title": "两次随机试验",
+     "type": "split"
+    },
+    {
+     "index": 3,
+     "start": 45.8,
+     "end": 60.4,
+     "seconds": 46,
+     "clock": "00:46",
+     "title": "正逆运动学",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 60.4,
+     "end": 76.267,
+     "seconds": 60,
+     "clock": "01:00",
+     "title": "实现 · 阻尼最小二乘 IK",
+     "type": "code"
+    },
+    {
+     "index": 5,
+     "start": 76.267,
+     "end": 90.734,
+     "seconds": 76,
+     "clock": "01:16",
+     "title": "运动学参数",
+     "type": "metrics"
+    },
+    {
+     "index": 6,
+     "start": 90.733,
+     "end": 106.733,
+     "seconds": 91,
+     "clock": "01:31",
+     "title": "执行 · 末端链路",
+     "type": "media"
+    },
+    {
+     "index": 7,
+     "start": 106.733,
+     "end": 120.466,
+     "seconds": 107,
+     "clock": "01:47",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch06_mobile_pick_place",
+   "title": "移动抓取：停稳之后",
+   "durationSec": 127.133,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch06_mobile_pick_place.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch06_mobile_pick_place.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 12.733,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 12.733,
+     "end": 27.8,
+     "seconds": 13,
+     "clock": "00:13",
+     "title": "真实操作 · 移动抓取",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 27.8,
+     "end": 43.667,
+     "seconds": 28,
+     "clock": "00:28",
+     "title": "任务读数",
+     "type": "media"
+    },
+    {
+     "index": 3,
+     "start": 43.667,
+     "end": 61.8,
+     "seconds": 44,
+     "clock": "00:44",
+     "title": "实验 · 停靠漂移",
+     "type": "chart"
+    },
+    {
+     "index": 4,
+     "start": 61.8,
+     "end": 77.6,
+     "seconds": 62,
+     "clock": "01:02",
+     "title": "实验 · 抬升验证",
+     "type": "chart"
+    },
+    {
+     "index": 5,
+     "start": 77.6,
+     "end": 94.367,
+     "seconds": 78,
+     "clock": "01:18",
+     "title": "两种控制模式",
+     "type": "image"
+    },
+    {
+     "index": 6,
+     "start": 94.367,
+     "end": 114.167,
+     "seconds": 94,
+     "clock": "01:34",
+     "title": "实现 · 阶段化任务",
+     "type": "code"
+    },
+    {
+     "index": 7,
+     "start": 114.167,
+     "end": 127.134,
+     "seconds": 114,
+     "clock": "01:54",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch07_vision_yolo",
+   "title": "YOLO 实时目标检测",
+   "durationSec": 116.133,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch07_vision_yolo.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch07_vision_yolo.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch07_vision_yolo.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 13.3,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 13.3,
+     "end": 26.567,
+     "seconds": 13,
+     "clock": "00:13",
+     "title": "真实操作 · 机载相机",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 26.567,
+     "end": 41.434,
+     "seconds": 27,
+     "clock": "00:27",
+     "title": "单帧检测",
+     "type": "media"
+    },
+    {
+     "index": 3,
+     "start": 41.433,
+     "end": 57.866,
+     "seconds": 41,
+     "clock": "00:41",
+     "title": "实验 · 阈值对比",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 57.867,
+     "end": 72.134,
+     "seconds": 58,
+     "clock": "00:58",
+     "title": "语义分割",
+     "type": "image"
+    },
+    {
+     "index": 5,
+     "start": 72.133,
+     "end": 88.266,
+     "seconds": 72,
+     "clock": "01:12",
+     "title": "实现 · 推理接口",
+     "type": "code"
+    },
+    {
+     "index": 6,
+     "start": 88.267,
+     "end": 103.534,
+     "seconds": 88,
+     "clock": "01:28",
+     "title": "检测能力",
+     "type": "metrics"
+    },
+    {
+     "index": 7,
+     "start": 103.533,
+     "end": 116.133,
+     "seconds": 104,
+     "clock": "01:44",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch08_lidar_slam",
+   "title": "激光雷达 SLAM",
+   "durationSec": 156.932,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch08_lidar_slam.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch08_lidar_slam.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 11.633,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 11.633,
+     "end": 27.866,
+     "seconds": 12,
+     "clock": "00:12",
+     "title": "真实操作 · 建图巡航",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 27.867,
+     "end": 45.267,
+     "seconds": 28,
+     "clock": "00:28",
+     "title": "双雷达融合",
+     "type": "media"
+    },
+    {
+     "index": 3,
+     "start": 45.267,
+     "end": 60.767,
+     "seconds": 45,
+     "clock": "00:45",
+     "title": "建图结果 · 2D 占据栅格",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 60.767,
+     "end": 78.367,
+     "seconds": 61,
+     "clock": "01:01",
+     "title": "建图结果 · 占据地图回放",
+     "type": "media"
+    },
+    {
+     "index": 5,
+     "start": 78.367,
+     "end": 96.134,
+     "seconds": 78,
+     "clock": "01:18",
+     "title": "实验 · 闭环优化",
+     "type": "path"
+    },
+    {
+     "index": 6,
+     "start": 96.133,
+     "end": 110.966,
+     "seconds": 96,
+     "clock": "01:36",
+     "title": "建图结果 · 3D 点云",
+     "type": "pointcloud"
+    },
+    {
+     "index": 7,
+     "start": 110.967,
+     "end": 127.867,
+     "seconds": 111,
+     "clock": "01:51",
+     "title": "实现 · 占据栅格更新",
+     "type": "code"
+    },
+    {
+     "index": 8,
+     "start": 127.867,
+     "end": 143.5,
+     "seconds": 128,
+     "clock": "02:08",
+     "title": "建图结果",
+     "type": "metrics"
+    },
+    {
+     "index": 9,
+     "start": 143.5,
+     "end": 156.933,
+     "seconds": 144,
+     "clock": "02:24",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch09_rgbd_grasp",
+   "title": "RGB-D 抓取规划",
+   "durationSec": 119.433,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch09_rgbd_grasp.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch09_rgbd_grasp.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch09_rgbd_grasp.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 14.1,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 14.1,
+     "end": 28.6,
+     "seconds": 14,
+     "clock": "00:14",
+     "title": "感知 · RGB-D 对齐",
+     "type": "image"
+    },
+    {
+     "index": 2,
+     "start": 28.6,
+     "end": 44.8,
+     "seconds": 29,
+     "clock": "00:29",
+     "title": "实验 · 抓取规划",
+     "type": "image"
+    },
+    {
+     "index": 3,
+     "start": 44.8,
+     "end": 60.833,
+     "seconds": 45,
+     "clock": "00:45",
+     "title": "实验 · 候选接受率",
+     "type": "chart"
+    },
+    {
+     "index": 4,
+     "start": 60.833,
+     "end": 75.633,
+     "seconds": 61,
+     "clock": "01:01",
+     "title": "实现 · 候选过滤",
+     "type": "code"
+    },
+    {
+     "index": 5,
+     "start": 75.633,
+     "end": 91.033,
+     "seconds": 76,
+     "clock": "01:16",
+     "title": "执行 · 抓取与放置",
+     "type": "media"
+    },
+    {
+     "index": 6,
+     "start": 91.033,
+     "end": 106.033,
+     "seconds": 91,
+     "clock": "01:31",
+     "title": "抓取规划结果",
+     "type": "metrics"
+    },
+    {
+     "index": 7,
+     "start": 106.033,
+     "end": 119.433,
+     "seconds": 106,
+     "clock": "01:46",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch10_nav2_navigation",
+   "title": "Nav2 自主导航",
+   "durationSec": 164.967,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch10_nav2_navigation.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 14.333,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 14.333,
+     "end": 27.666,
+     "seconds": 14,
+     "clock": "00:14",
+     "title": "真实操作 · 导航执行",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 27.667,
+     "end": 43.134,
+     "seconds": 28,
+     "clock": "00:28",
+     "title": "规划视角 · RViz",
+     "type": "image"
+    },
+    {
+     "index": 3,
+     "start": 43.133,
+     "end": 60.933,
+     "seconds": 43,
+     "clock": "00:43",
+     "title": "规划对照 · 全局与局部",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 60.933,
+     "end": 80.7,
+     "seconds": 61,
+     "clock": "01:01",
+     "title": "实验一 · 膨胀边距",
+     "type": "chart"
+    },
+    {
+     "index": 5,
+     "start": 80.7,
+     "end": 98.8,
+     "seconds": 81,
+     "clock": "01:21",
+     "title": "实验四 · 动态障碍绕行",
+     "type": "image"
+    },
+    {
+     "index": 6,
+     "start": 98.8,
+     "end": 115.367,
+     "seconds": 99,
+     "clock": "01:39",
+     "title": "实验总览",
+     "type": "image"
+    },
+    {
+     "index": 7,
+     "start": 115.367,
+     "end": 130.967,
+     "seconds": 115,
+     "clock": "01:55",
+     "title": "实现 · 全局 A*",
+     "type": "code"
+    },
+    {
+     "index": 8,
+     "start": 130.967,
+     "end": 150.867,
+     "seconds": 131,
+     "clock": "02:11",
+     "title": "导航实验读数",
+     "type": "metrics"
+    },
+    {
+     "index": 9,
+     "start": 150.867,
+     "end": 164.967,
+     "seconds": 151,
+     "clock": "02:31",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch11_moveit2_planning",
+   "title": "MoveIt2 机械臂规划",
+   "durationSec": 163.067,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch11_moveit2_planning.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch11_moveit2_planning.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch11_moveit2_planning.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 15.033,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 15.033,
+     "end": 30.833,
+     "seconds": 15,
+     "clock": "00:15",
+     "title": "规划与执行 · RViz",
+     "type": "image"
+    },
+    {
+     "index": 2,
+     "start": 30.833,
+     "end": 49.833,
+     "seconds": 31,
+     "clock": "00:31",
+     "title": "规划执行 · RViz 实时画面",
+     "type": "image"
+    },
+    {
+     "index": 3,
+     "start": 49.833,
+     "end": 66.3,
+     "seconds": 50,
+     "clock": "00:50",
+     "title": "规划场景 · 深度点云",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 66.3,
+     "end": 82.6,
+     "seconds": 66,
+     "clock": "01:06",
+     "title": "真实执行 · 抓取链",
+     "type": "media"
+    },
+    {
+     "index": 5,
+     "start": 82.6,
+     "end": 101.167,
+     "seconds": 83,
+     "clock": "01:23",
+     "title": "实验二 · 采样步长",
+     "type": "chart"
+    },
+    {
+     "index": 6,
+     "start": 101.167,
+     "end": 116.967,
+     "seconds": 101,
+     "clock": "01:41",
+     "title": "实验总览",
+     "type": "image"
+    },
+    {
+     "index": 7,
+     "start": 116.967,
+     "end": 131.434,
+     "seconds": 117,
+     "clock": "01:57",
+     "title": "实现 · RRT-Connect",
+     "type": "code"
+    },
+    {
+     "index": 8,
+     "start": 131.433,
+     "end": 150.333,
+     "seconds": 131,
+     "clock": "02:11",
+     "title": "规划实验读数",
+     "type": "metrics"
+    },
+    {
+     "index": 9,
+     "start": 150.333,
+     "end": 163.066,
+     "seconds": 150,
+     "clock": "02:30",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "ch12_mobile_manipulation",
+   "title": "移动操作全流程",
+   "durationSec": 132.467,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch12_mobile_manipulation.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 15.633,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 15.633,
+     "end": 31.6,
+     "seconds": 16,
+     "clock": "00:16",
+     "title": "感知 · 苹果检测",
+     "type": "image"
+    },
+    {
+     "index": 2,
+     "start": 31.6,
+     "end": 49.0,
+     "seconds": 32,
+     "clock": "00:32",
+     "title": "任务轨迹 · 底盘",
+     "type": "path"
+    },
+    {
+     "index": 3,
+     "start": 49.0,
+     "end": 64.933,
+     "seconds": 49,
+     "clock": "00:49",
+     "title": "任务遥测 · 高度曲线",
+     "type": "chart"
+    },
+    {
+     "index": 4,
+     "start": 64.933,
+     "end": 80.2,
+     "seconds": 65,
+     "clock": "01:05",
+     "title": "任务复盘 · 仪表盘",
+     "type": "image"
+    },
+    {
+     "index": 5,
+     "start": 80.2,
+     "end": 97.0,
+     "seconds": 80,
+     "clock": "01:20",
+     "title": "实现 · 航点执行",
+     "type": "code"
+    },
+    {
+     "index": 6,
+     "start": 97.0,
+     "end": 116.0,
+     "seconds": 97,
+     "clock": "01:37",
+     "title": "全流程结果",
+     "type": "metrics"
+    },
+    {
+     "index": 7,
+     "start": 116.0,
+     "end": 132.467,
+     "seconds": 116,
+     "clock": "01:56",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "video_task1_kinematics_and_control",
+   "title": "运动学与控制",
+   "durationSec": 114.032,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_task1_kinematics_and_control.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 13.4,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 13.4,
+     "end": 26.233,
+     "seconds": 13,
+     "clock": "00:13",
+     "title": "真实操作 · 底盘",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 26.233,
+     "end": 40.033,
+     "seconds": 26,
+     "clock": "00:26",
+     "title": "真实操作 · 机械臂",
+     "type": "media"
+    },
+    {
+     "index": 3,
+     "start": 40.033,
+     "end": 53.933,
+     "seconds": 40,
+     "clock": "00:40",
+     "title": "正逆运动学",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 53.933,
+     "end": 71.266,
+     "seconds": 54,
+     "clock": "00:54",
+     "title": "实现 · 轮组逆运动学",
+     "type": "code"
+    },
+    {
+     "index": 5,
+     "start": 71.267,
+     "end": 86.3,
+     "seconds": 71,
+     "clock": "01:11",
+     "title": "同一条任务链",
+     "type": "split"
+    },
+    {
+     "index": 6,
+     "start": 86.3,
+     "end": 101.6,
+     "seconds": 86,
+     "clock": "01:26",
+     "title": "控制与运动学参数",
+     "type": "metrics"
+    },
+    {
+     "index": 7,
+     "start": 101.6,
+     "end": 114.033,
+     "seconds": 102,
+     "clock": "01:42",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "video_task2_vision_and_slam",
+   "title": "视觉与 SLAM",
+   "durationSec": 138.365,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_task2_vision_and_slam.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task2_vision_and_slam.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 11.3,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 11.3,
+     "end": 24.133,
+     "seconds": 11,
+     "clock": "00:11",
+     "title": "真实操作 · 视觉检测",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 24.133,
+     "end": 37.766,
+     "seconds": 24,
+     "clock": "00:24",
+     "title": "实验 · 置信度阈值",
+     "type": "image"
+    },
+    {
+     "index": 3,
+     "start": 37.767,
+     "end": 51.0,
+     "seconds": 38,
+     "clock": "00:38",
+     "title": "真实操作 · 双雷达建图",
+     "type": "media"
+    },
+    {
+     "index": 4,
+     "start": 51.0,
+     "end": 67.633,
+     "seconds": 51,
+     "clock": "00:51",
+     "title": "实验 · 闭环轨迹",
+     "type": "path"
+    },
+    {
+     "index": 5,
+     "start": 67.633,
+     "end": 83.033,
+     "seconds": 68,
+     "clock": "01:08",
+     "title": "建图结果 · 2D 地图回放",
+     "type": "media"
+    },
+    {
+     "index": 6,
+     "start": 83.033,
+     "end": 95.466,
+     "seconds": 83,
+     "clock": "01:23",
+     "title": "建图结果 · 3D 点云",
+     "type": "pointcloud"
+    },
+    {
+     "index": 7,
+     "start": 95.467,
+     "end": 112.467,
+     "seconds": 95,
+     "clock": "01:35",
+     "title": "建图结果 · 点云俯视",
+     "type": "pointcloud"
+    },
+    {
+     "index": 8,
+     "start": 112.467,
+     "end": 126.4,
+     "seconds": 112,
+     "clock": "01:52",
+     "title": "任务二读数",
+     "type": "metrics"
+    },
+    {
+     "index": 9,
+     "start": 126.4,
+     "end": 138.367,
+     "seconds": 126,
+     "clock": "02:06",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "video_task3_navigation_and_manipulation",
+   "title": "导航与操作",
+   "durationSec": 116.7,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_task3_navigation_and_manipulation.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 14.233,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 14.233,
+     "end": 29.333,
+     "seconds": 14,
+     "clock": "00:14",
+     "title": "真实操作 · 导航",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 29.333,
+     "end": 43.6,
+     "seconds": 29,
+     "clock": "00:29",
+     "title": "规划视角 · RViz",
+     "type": "image"
+    },
+    {
+     "index": 3,
+     "start": 43.6,
+     "end": 56.2,
+     "seconds": 44,
+     "clock": "00:44",
+     "title": "规划与执行 · RViz",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 56.2,
+     "end": 71.9,
+     "seconds": 56,
+     "clock": "00:56",
+     "title": "实验 · 采样步长",
+     "type": "chart"
+    },
+    {
+     "index": 5,
+     "start": 71.9,
+     "end": 86.9,
+     "seconds": 72,
+     "clock": "01:12",
+     "title": "实现 · 全局 A*",
+     "type": "code"
+    },
+    {
+     "index": 6,
+     "start": 86.9,
+     "end": 104.0,
+     "seconds": 87,
+     "clock": "01:27",
+     "title": "任务三读数",
+     "type": "metrics"
+    },
+    {
+     "index": 7,
+     "start": 104.0,
+     "end": 116.7,
+     "seconds": 104,
+     "clock": "01:44",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  },
+  {
+   "id": "video_capstone_practices_ch6_ch9_ch12",
+   "title": "综合实践：移动操作闭环",
+   "durationSec": 145.466,
+   "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_capstone_practices_ch6_ch9_ch12.jpg",
+   "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_capstone_practices_ch6_ch9_ch12.vtt",
+   "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_capstone_practices_ch6_ch9_ch12.transcript.txt",
+   "chapters": [
+    {
+     "index": 0,
+     "start": 0.0,
+     "end": 14.4,
+     "seconds": 0,
+     "clock": "00:00",
+     "title": "开场",
+     "type": "title"
+    },
+    {
+     "index": 1,
+     "start": 14.4,
+     "end": 30.1,
+     "seconds": 14,
+     "clock": "00:14",
+     "title": "真实操作 · 取件",
+     "type": "media"
+    },
+    {
+     "index": 2,
+     "start": 30.1,
+     "end": 43.833,
+     "seconds": 30,
+     "clock": "00:30",
+     "title": "真实操作 · 视觉",
+     "type": "media"
+    },
+    {
+     "index": 3,
+     "start": 43.833,
+     "end": 65.633,
+     "seconds": 44,
+     "clock": "00:44",
+     "title": "感知控制 · RGB-D 抓取",
+     "type": "image"
+    },
+    {
+     "index": 4,
+     "start": 65.633,
+     "end": 81.6,
+     "seconds": 66,
+     "clock": "01:06",
+     "title": "任务轨迹 · 底盘",
+     "type": "path"
+    },
+    {
+     "index": 5,
+     "start": 81.6,
+     "end": 96.933,
+     "seconds": 82,
+     "clock": "01:22",
+     "title": "任务遥测 · 高度曲线",
+     "type": "chart"
+    },
+    {
+     "index": 6,
+     "start": 96.933,
+     "end": 112.633,
+     "seconds": 97,
+     "clock": "01:37",
+     "title": "任务复盘 · 仪表盘",
+     "type": "image"
+    },
+    {
+     "index": 7,
+     "start": 112.633,
+     "end": 131.633,
+     "seconds": 113,
+     "clock": "01:53",
+     "title": "全流程结果",
+     "type": "metrics"
+    },
+    {
+     "index": 8,
+     "start": 131.633,
+     "end": 145.466,
+     "seconds": 132,
+     "clock": "02:12",
+     "title": "总结",
+     "type": "outro"
+    }
+   ]
+  }
+ ]
+}

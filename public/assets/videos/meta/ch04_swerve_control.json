@@ -1,0 +1,156 @@
+{
+ "id": "ch04_swerve_control",
+ "title": "全向底盘运动控制",
+ "shortTitle": "全向底盘运动控制",
+ "chapterLabel": "第 04 章 · 全向底盘",
+ "description": "把一条速度指令，解算成四个轮组的转向角与轮速。",
+ "durationSec": 107.4,
+ "durationISO": "PT1M47S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch04_swerve_control.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/ch04_swerve_control.mp4",
+ "videoPath": "/assets/videos/ch04_swerve_control.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/ch04_swerve_control.mp4",
+ "mobilePath": "/assets/videos/720/ch04_swerve_control.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 14.233,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 14.233,
+   "end": 30.333,
+   "seconds": 14,
+   "clock": "00:14",
+   "title": "真实操作 · 全向底盘",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 30.333,
+   "end": 46.2,
+   "seconds": 30,
+   "clock": "00:30",
+   "title": "真实操作 · 复合运动",
+   "type": "media"
+  },
+  {
+   "index": 3,
+   "start": 46.2,
+   "end": 62.167,
+   "seconds": 46,
+   "clock": "00:46",
+   "title": "实现 · 轮组逆运动学",
+   "type": "code"
+  },
+  {
+   "index": 4,
+   "start": 62.167,
+   "end": 78.8,
+   "seconds": 62,
+   "clock": "01:02",
+   "title": "底盘能力边界",
+   "type": "metrics"
+  },
+  {
+   "index": 5,
+   "start": 78.8,
+   "end": 93.567,
+   "seconds": 79,
+   "clock": "01:19",
+   "title": "连续动作 · 实拍",
+   "type": "media"
+  },
+  {
+   "index": 6,
+   "start": 93.567,
+   "end": 107.4,
+   "seconds": 94,
+   "clock": "01:34",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 14.233,
+   "section": "",
+   "narration": "这一章，我们从一条速度指令开始。机器人要在不改变朝向的情况下横移、斜行、自转，答案藏在四个独立转向的轮组里。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 14.233,
+   "end": 30.333,
+   "section": "真实操作 · 全向底盘",
+   "narration": "先看平移。控制器给出 0.40 米每秒的前进速度，四个轮组根据各自的安装位置，解算出转向角和轮速。轮子没有统一朝向，底盘却能沿直线走。"
+  },
+  {
+   "index": 2,
+   "type": "media",
+   "start": 30.333,
+   "end": 46.2,
+   "section": "真实操作 · 复合运动",
+   "narration": "接下来叠加角速度。0.65 弧度每秒的自转，让每个轮组的切向速度不同；斜行时，线速度和角速度同时参与解算，四个轮子各自找到新的合成方向。"
+  },
+  {
+   "index": 3,
+   "type": "code",
+   "start": 46.2,
+   "end": 62.167,
+   "section": "实现 · 轮组逆运动学",
+   "narration": "代码里没有魔法。对每个轮组，先算它在底盘坐标系中的速度分量：vx 减去角速度乘轮位 y，vy 加上角速度乘轮位 x，再合成转向角和轮速。"
+  },
+  {
+   "index": 4,
+   "type": "metrics",
+   "start": 62.167,
+   "end": 78.8,
+   "section": "底盘能力边界",
+   "narration": "这些限制不是为了好看。0.70 米每秒的线速度、1.20 弧度每秒的角速度、18 弧度每秒的轮速上限，会一起约束解算结果；超过 0.5 秒没有新指令，底盘立即停车。"
+  },
+  {
+   "index": 5,
+   "type": "media",
+   "start": 78.8,
+   "end": 93.567,
+   "section": "连续动作 · 实拍",
+   "narration": "再把三段动作连起来看。平移、自转和斜行在同一段录制里连续切换，车头没有跟着转向；对全向底盘来说，朝向和运动方向可以彻底解耦。"
+  },
+  {
+   "index": 6,
+   "type": "outro",
+   "start": 93.567,
+   "end": 107.4,
+   "section": "",
+   "narration": "全向底盘的价值，是把复杂的路径问题变成简单的速度问题。下一章，我们把控制对象从四个轮子换成七个关节。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "全向底盘运动控制",
+  "description": "把一条速度指令，解算成四个轮组的转向角与轮速。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/ch04_swerve_control.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT1M47S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/ch04_swerve_control.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch04_swerve_control.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

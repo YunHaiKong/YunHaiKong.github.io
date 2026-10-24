@@ -1,0 +1,173 @@
+{
+ "id": "video_task1_kinematics_and_control",
+ "title": "运动学与控制",
+ "shortTitle": "运动学与控制",
+ "chapterLabel": "任务一 · 运动学与控制",
+ "description": "从四个轮子到七个关节：把任务目标翻译成执行器动作。",
+ "durationSec": 114.032,
+ "durationISO": "PT1M54S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_task1_kinematics_and_control.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/video_task1_kinematics_and_control.mp4",
+ "videoPath": "/assets/videos/video_task1_kinematics_and_control.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/video_task1_kinematics_and_control.mp4",
+ "mobilePath": "/assets/videos/720/video_task1_kinematics_and_control.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 13.4,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 13.4,
+   "end": 26.233,
+   "seconds": 13,
+   "clock": "00:13",
+   "title": "真实操作 · 底盘",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 26.233,
+   "end": 40.033,
+   "seconds": 26,
+   "clock": "00:26",
+   "title": "真实操作 · 机械臂",
+   "type": "media"
+  },
+  {
+   "index": 3,
+   "start": 40.033,
+   "end": 53.933,
+   "seconds": 40,
+   "clock": "00:40",
+   "title": "正逆运动学",
+   "type": "image"
+  },
+  {
+   "index": 4,
+   "start": 53.933,
+   "end": 71.266,
+   "seconds": 54,
+   "clock": "00:54",
+   "title": "实现 · 轮组逆运动学",
+   "type": "code"
+  },
+  {
+   "index": 5,
+   "start": 71.267,
+   "end": 86.3,
+   "seconds": 71,
+   "clock": "01:11",
+   "title": "同一条任务链",
+   "type": "split"
+  },
+  {
+   "index": 6,
+   "start": 86.3,
+   "end": 101.6,
+   "seconds": 86,
+   "clock": "01:26",
+   "title": "控制与运动学参数",
+   "type": "metrics"
+  },
+  {
+   "index": 7,
+   "start": 101.6,
+   "end": 114.033,
+   "seconds": 102,
+   "clock": "01:42",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 13.4,
+   "section": "",
+   "narration": "任务一不是一章的复习，而是把底盘控制和机械臂运动学接成一条链：底盘把机器人送到工位，机械臂再把末端送到目标。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 13.4,
+   "end": 26.233,
+   "section": "真实操作 · 底盘",
+   "narration": "先看底盘。四个轮组的转向角和轮速由同一条速度指令解算，横移、自转、斜行都不需要改变车头方向。"
+  },
+  {
+   "index": 2,
+   "type": "media",
+   "start": 26.233,
+   "end": 40.033,
+   "section": "真实操作 · 机械臂",
+   "narration": "底盘停稳后，机械臂接管。正运动学算末端在哪，逆运动学把目标位姿变成七个关节角，阻尼最小二乘负责迭代收敛。"
+  },
+  {
+   "index": 3,
+   "type": "image",
+   "start": 40.033,
+   "end": 53.933,
+   "section": "正逆运动学",
+   "narration": "这条链路的关键是坐标变换：底盘位姿、臂基座、末端工具，每一层都要对齐；任何一层标定错了，夹爪就会在最后一厘米失手。"
+  },
+  {
+   "index": 4,
+   "type": "code",
+   "start": 53.933,
+   "end": 71.266,
+   "section": "实现 · 轮组逆运动学",
+   "narration": "底盘逆解把 vx、vy、wz 分解到轮组；机械臂逆解则用雅可比把末端误差映射回关节增量。两种逆解，本质都是把任务空间的目标翻译成执行器空间的动作。"
+  },
+  {
+   "index": 5,
+   "type": "split",
+   "start": 71.267,
+   "end": 86.3,
+   "section": "同一条任务链",
+   "narration": "任务一最后把两段放在一起：底盘负责把机器人送到工位，机械臂负责把末端送到物体。前者解决大范围移动，后者解决最后几十厘米的精度。"
+  },
+  {
+   "index": 6,
+   "type": "metrics",
+   "start": 86.3,
+   "end": 101.6,
+   "section": "控制与运动学参数",
+   "narration": "把关键参数放在一起：0.070 米轮半径、0.70 米每秒线速度、7 自由度机械臂、2 毫米位置容差。这些数字决定了任务能做到多快、多准。"
+  },
+  {
+   "index": 7,
+   "type": "outro",
+   "start": 101.6,
+   "end": 114.033,
+   "section": "",
+   "narration": "运动学解决‘怎么动’，控制解决‘动得稳不稳’。任务二会加上视觉和 SLAM，让机器人知道自己看到了什么、站在哪里。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "运动学与控制",
+  "description": "从四个轮子到七个关节：把任务目标翻译成执行器动作。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/video_task1_kinematics_and_control.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT1M54S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/video_task1_kinematics_and_control.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task1_kinematics_and_control.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

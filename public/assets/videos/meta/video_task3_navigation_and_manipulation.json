@@ -1,0 +1,173 @@
+{
+ "id": "video_task3_navigation_and_manipulation",
+ "title": "导航与操作",
+ "shortTitle": "导航与操作",
+ "chapterLabel": "任务三 · 导航与操作",
+ "description": "米级到达，厘米级对准：两套规划器接成一条链。",
+ "durationSec": 116.7,
+ "durationISO": "PT1M57S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/video_task3_navigation_and_manipulation.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/video_task3_navigation_and_manipulation.mp4",
+ "videoPath": "/assets/videos/video_task3_navigation_and_manipulation.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/video_task3_navigation_and_manipulation.mp4",
+ "mobilePath": "/assets/videos/720/video_task3_navigation_and_manipulation.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 14.233,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 14.233,
+   "end": 29.333,
+   "seconds": 14,
+   "clock": "00:14",
+   "title": "真实操作 · 导航",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 29.333,
+   "end": 43.6,
+   "seconds": 29,
+   "clock": "00:29",
+   "title": "规划视角 · RViz",
+   "type": "image"
+  },
+  {
+   "index": 3,
+   "start": 43.6,
+   "end": 56.2,
+   "seconds": 44,
+   "clock": "00:44",
+   "title": "规划与执行 · RViz",
+   "type": "image"
+  },
+  {
+   "index": 4,
+   "start": 56.2,
+   "end": 71.9,
+   "seconds": 56,
+   "clock": "00:56",
+   "title": "实验 · 采样步长",
+   "type": "chart"
+  },
+  {
+   "index": 5,
+   "start": 71.9,
+   "end": 86.9,
+   "seconds": 72,
+   "clock": "01:12",
+   "title": "实现 · 全局 A*",
+   "type": "code"
+  },
+  {
+   "index": 6,
+   "start": 86.9,
+   "end": 104.0,
+   "seconds": 87,
+   "clock": "01:27",
+   "title": "任务三读数",
+   "type": "metrics"
+  },
+  {
+   "index": 7,
+   "start": 104.0,
+   "end": 116.7,
+   "seconds": 104,
+   "clock": "01:44",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 14.233,
+   "section": "",
+   "narration": "任务三把 Nav2 和 MoveIt2 接到一起：导航负责把底盘送到目标附近，机械臂负责最后一段抓取。一个管米级，一个管厘米级。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 14.233,
+   "end": 29.333,
+   "section": "真实操作 · 导航",
+   "narration": "导航先走。全局规划给出路径，局部规划处理动态障碍，底盘跟踪路径直到目标位姿。到达精度决定了机械臂有没有一个稳定的工作平台。"
+  },
+  {
+   "index": 2,
+   "type": "image",
+   "start": 29.333,
+   "end": 43.6,
+   "section": "规划视角 · RViz",
+   "narration": "RViz 里能看到代价地图和全局路径。膨胀层把障碍向外推，路径在安全距离之外；前视距离和控制器增益决定跟踪误差。"
+  },
+  {
+   "index": 3,
+   "type": "image",
+   "start": 43.6,
+   "end": 56.2,
+   "section": "规划与执行 · RViz",
+   "narration": "到了工位，MoveIt2 接管。它在七维关节空间里采样、碰撞检查、优化轨迹，再把每个轨迹点送给控制器。"
+  },
+  {
+   "index": 4,
+   "type": "chart",
+   "start": 56.2,
+   "end": 71.9,
+   "section": "实验 · 采样步长",
+   "narration": "步长实验说明采样不是越小越好：0.22 的步长规划 22.85 毫秒，0.45 反而要 29.43 毫秒；狭窄通道需要更细的采样，开阔区域则相反。"
+  },
+  {
+   "index": 5,
+   "type": "code",
+   "start": 71.9,
+   "end": 86.9,
+   "section": "实现 · 全局 A*",
+   "narration": "A* 在栅格上找全局路径，八连通允许斜向移动；RRT-Connect 在关节空间里找无碰撞轨迹。两种规划器，一个对地图，一个对机械臂。"
+  },
+  {
+   "index": 6,
+   "type": "metrics",
+   "start": 86.9,
+   "end": 104.0,
+   "section": "任务三读数",
+   "narration": "任务三的关键数字：11.093 米路径、7115 个扩展节点、0.465 米最小间距；机械臂侧，22.85 毫秒规划、44.8% 轨迹缩短、3.95 秒执行。"
+  },
+  {
+   "index": 7,
+   "type": "outro",
+   "start": 104.0,
+   "end": 116.7,
+   "section": "",
+   "narration": "两套规划器接起来，才叫移动操作。最后的综合实践，会把这些数字放进一次完整任务里，用同一条时间轴检验。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "导航与操作",
+  "description": "米级到达，厘米级对准：两套规划器接成一条链。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/video_task3_navigation_and_manipulation.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT1M57S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/video_task3_navigation_and_manipulation.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/video_task3_navigation_and_manipulation.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

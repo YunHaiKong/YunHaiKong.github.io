@@ -243,7 +243,7 @@ draft: false
 为提供身临其境的具身智能算法运行直观展示，所有实验均录制了全高清仿真运行视频，并由 AI 神经解说员进行逐帧算法原理解析。视频全部由 GitHub 仓库原生托管，开箱即播，无任何第三方平台依赖与广告。
 
 ### 1. Task 3 核心综合演示：Nav2 代价地图避障导航与 MoveIt 2 空间避障规划
-> 💡 **视频内容**：ROS 2 Nav2 全局膨胀代价地图与 A* 启发最优寻优、DWA 局部窗口实时避障重规划（亚 2cm 跟踪误差）、MoveIt 2 机械臂 7-DOF 配置空间（C-Space）双向 RRT-Connect 搜索、OctoMap 空间动态体素碰撞检测、Shortcut 贪婪剪枝与时间参数化平滑。
+> 💡 **视频内容**：Nav2 全局 A*（11.093 m、7115 节点、0.465 m 最小间距）与 RViz 规划视角、MoveIt 2 7-DOF RRT-Connect 步长实验（0.22 rad 对应 22.85 ms）、44.8% 轨迹缩短与 3.95 s 执行。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
   <video poster="/assets/videos/posters/video_task3_navigation_and_manipulation.jpg" src="/assets/videos/video_task3_navigation_and_manipulation.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
@@ -251,21 +251,23 @@ draft: false
   </video>
 </div>
 
-#### 🎙️ 解说旁白与章节时间戳 (Narration Script)
-| 时间戳 | 演示阶段 | 核心算法与监控指标 | 解说旁白摘要 |
-| :--- | :--- | :--- | :--- |
-| **00:00 - 00:12** | 规划架构 | Nav2 底盘规划 + MoveIt 2 双臂规划 | 欢迎观看 Task 3 综合讲解。系统打通了底盘路径避障导航与机械臂高维空间避障规划两大核心能力。 |
-| **00:12 - 00:24** | Nav2 全域避障 | 多层代价地图膨胀 + A* 寻优 + DWA | 分层代价地图构建安全梯度，A* 搜索全局最优航线，DWA 规划器以 30Hz 频率实时规避动态突发障碍。 |
-| **00:24 - 00:36** | MoveIt 2 C-Space | 7-DOF RRT-Connect + OctoMap 体素 | 机械臂在 7 维配置空间中运行双向 RRT-Connect，结合 OctoMap 动态体素网格实现绝对防碰撞。 |
-| **00:36 - 00:46** | 平滑时间参数化 | Shortcut 剪枝 + TOTG 动力学重构 | 轨迹经贪婪剪枝平滑与时间参数化重新采样，满足关节速度与加速度物理极限，实现平顺安全执行。 |
+> 🎧 **播放器增强**：本页 3 条视频均为**画面内嵌中文字幕**，并提供 **VTT 字幕文件**、**可点击章节导航** 与 **完整文字稿**，移动端自动使用 720p 视频源；章节时间轴以实际配音为准。
 
 ---
 
 ### 2. 分章节专项演示视频
-- **第十章：基于 Nav2 的代价地图膨胀与全域动态避障导航**：
+**第十章：基于 Nav2 的代价地图膨胀与全域动态避障导航**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch10_nav2_navigation.jpg" src="/assets/videos/ch10_nav2_navigation.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
-- **第十一章：基于 MoveIt 2 的高维 C 空间规划与 OctoMap 空间避障**：
+</div>
+
+**第十一章：基于 MoveIt 2 的高维 C 空间规划与 OctoMap 空间避障**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch11_moveit2_planning.jpg" src="/assets/videos/ch11_moveit2_planning.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+</div>
+
 
 ## 📝 总结与收获
 

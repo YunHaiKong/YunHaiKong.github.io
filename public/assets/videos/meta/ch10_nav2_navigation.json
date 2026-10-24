@@ -1,0 +1,207 @@
+{
+ "id": "ch10_nav2_navigation",
+ "title": "Nav2 自主导航",
+ "shortTitle": "Nav2 自主导航",
+ "chapterLabel": "第 10 章 · Nav2 导航",
+ "description": "全局 A*、代价地图、局部避障与路径跟踪。",
+ "durationSec": 164.967,
+ "durationISO": "PT2M45S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch10_nav2_navigation.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/ch10_nav2_navigation.mp4",
+ "videoPath": "/assets/videos/ch10_nav2_navigation.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/ch10_nav2_navigation.mp4",
+ "mobilePath": "/assets/videos/720/ch10_nav2_navigation.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 14.333,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 14.333,
+   "end": 27.666,
+   "seconds": 14,
+   "clock": "00:14",
+   "title": "真实操作 · 导航执行",
+   "type": "media"
+  },
+  {
+   "index": 2,
+   "start": 27.667,
+   "end": 43.134,
+   "seconds": 28,
+   "clock": "00:28",
+   "title": "规划视角 · RViz",
+   "type": "image"
+  },
+  {
+   "index": 3,
+   "start": 43.133,
+   "end": 60.933,
+   "seconds": 43,
+   "clock": "00:43",
+   "title": "规划对照 · 全局与局部",
+   "type": "image"
+  },
+  {
+   "index": 4,
+   "start": 60.933,
+   "end": 80.7,
+   "seconds": 61,
+   "clock": "01:01",
+   "title": "实验一 · 膨胀边距",
+   "type": "chart"
+  },
+  {
+   "index": 5,
+   "start": 80.7,
+   "end": 98.8,
+   "seconds": 81,
+   "clock": "01:21",
+   "title": "实验四 · 动态障碍绕行",
+   "type": "image"
+  },
+  {
+   "index": 6,
+   "start": 98.8,
+   "end": 115.367,
+   "seconds": 99,
+   "clock": "01:39",
+   "title": "实验总览",
+   "type": "image"
+  },
+  {
+   "index": 7,
+   "start": 115.367,
+   "end": 130.967,
+   "seconds": 115,
+   "clock": "01:55",
+   "title": "实现 · 全局 A*",
+   "type": "code"
+  },
+  {
+   "index": 8,
+   "start": 130.967,
+   "end": 150.867,
+   "seconds": 131,
+   "clock": "02:11",
+   "title": "导航实验读数",
+   "type": "metrics"
+  },
+  {
+   "index": 9,
+   "start": 150.867,
+   "end": 164.967,
+   "seconds": 151,
+   "clock": "02:31",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 14.333,
+   "section": "",
+   "narration": "导航要回答的不是‘怎么走’，而是‘哪条路能走、走得安全、还能跟踪得上’。这一章，我们把全局规划、局部避障和路径跟踪串起来。"
+  },
+  {
+   "index": 1,
+   "type": "media",
+   "start": 14.333,
+   "end": 27.666,
+   "section": "真实操作 · 导航执行",
+   "narration": "先看执行。机器人从起点出发，绕过两个静态障碍箱，朝目标点移动。没有穿模，没有擦边，最后停在目标位姿附近。"
+  },
+  {
+   "index": 2,
+   "type": "image",
+   "start": 27.667,
+   "end": 43.134,
+   "section": "规划视角 · RViz",
+   "narration": "这是同一套导航栈在 RViz 里的视角。灰色是代价地图，彩色膨胀层把障碍向外扩张；红线是全局路径，它在膨胀区之外寻找最短可行路径。"
+  },
+  {
+   "index": 3,
+   "type": "image",
+   "start": 43.133,
+   "end": 60.933,
+   "section": "规划对照 · 全局与局部",
+   "narration": "把全局和局部拆开看。左边青色细线是 A* 走出的全局路径，右边红色扇形是局部规划器每个周期评估的候选轨迹；蓝色圆点是机器人当前位姿，绿色是目标点。"
+  },
+  {
+   "index": 4,
+   "type": "chart",
+   "start": 60.933,
+   "end": 80.7,
+   "section": "实验一 · 膨胀边距",
+   "narration": "安全边距从 2 厘米加到 25 厘米，路径只从 11.035 米变成 11.210 米，代价很小；最小障碍间距却从 0.369 米提高到 0.575 米。规划器用很小的长度代价，换来了更大的安全余量。"
+  },
+  {
+   "index": 5,
+   "type": "image",
+   "start": 80.7,
+   "end": 98.8,
+   "section": "实验四 · 动态障碍绕行",
+   "narration": "动态障碍出现后，全局路径仍然指向终点，局部窗口 A* 沿黄色膨胀边界重规划。全局路径 88 个点，局部绕行段 34 个点；底盘没有停车等待，而是从侧面绕过去。"
+  },
+  {
+   "index": 6,
+   "type": "image",
+   "start": 98.8,
+   "end": 115.367,
+   "section": "实验总览",
+   "narration": "这张仪表盘汇总了五组实验：膨胀边距、四连通与八连通、前视距离、动态障碍绕行、多目标点。每组都在同一张地图上跑，差异来自参数，不来自场景。"
+  },
+  {
+   "index": 7,
+   "type": "code",
+   "start": 115.367,
+   "end": 130.967,
+   "section": "实现 · 全局 A*",
+   "narration": "A* 的核心是优先级队列。每次弹出 f 值最小的格子，扩展邻居并更新 g 值；八连通允许斜向移动，路径更短，但转弯次数和碰撞检查也更多。"
+  },
+  {
+   "index": 8,
+   "type": "metrics",
+   "start": 130.967,
+   "end": 150.867,
+   "section": "导航实验读数",
+   "narration": "把关键读数放在一起：11.093 米路径、7115 个扩展节点、0.465 米最小间距。前视距离 0.7 米时横向误差 1.031 米；动态障碍触发后，全局路径 88 个点，局部绕行段 34 个点。"
+  },
+  {
+   "index": 9,
+   "type": "outro",
+   "start": 150.867,
+   "end": 164.967,
+   "section": "",
+   "narration": "导航把机器人送到工位，但最后几十厘米要靠机械臂。下一章，我们进入七维关节空间，看 MoveIt2 如何规划一条无碰撞轨迹。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Nav2 自主导航",
+  "description": "全局 A*、代价地图、局部避障与路径跟踪。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/ch10_nav2_navigation.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT2M45S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/ch10_nav2_navigation.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch10_nav2_navigation.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

@@ -1,0 +1,173 @@
+{
+ "id": "ch12_mobile_manipulation",
+ "title": "移动操作全流程",
+ "shortTitle": "移动操作全流程",
+ "chapterLabel": "第 12 章 · 移动操作",
+ "description": "导航、视觉、机械臂与夹爪，在同一次任务里闭环。",
+ "durationSec": 132.467,
+ "durationISO": "PT2M12S",
+ "uploadDate": "2026-10-24",
+ "poster": "https://YunHaiKong.github.io/assets/videos/posters/ch12_mobile_manipulation.jpg",
+ "video": "https://YunHaiKong.github.io/assets/videos/ch12_mobile_manipulation.mp4",
+ "videoPath": "/assets/videos/ch12_mobile_manipulation.mp4",
+ "mobile": "https://YunHaiKong.github.io/assets/videos/720/ch12_mobile_manipulation.mp4",
+ "mobilePath": "/assets/videos/720/ch12_mobile_manipulation.mp4",
+ "captions": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.vtt",
+ "chaptersFile": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.chapters.vtt",
+ "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.transcript.txt",
+ "chapters": [
+  {
+   "index": 0,
+   "start": 0.0,
+   "end": 15.633,
+   "seconds": 0,
+   "clock": "00:00",
+   "title": "开场",
+   "type": "title"
+  },
+  {
+   "index": 1,
+   "start": 15.633,
+   "end": 31.6,
+   "seconds": 16,
+   "clock": "00:16",
+   "title": "感知 · 苹果检测",
+   "type": "image"
+  },
+  {
+   "index": 2,
+   "start": 31.6,
+   "end": 49.0,
+   "seconds": 32,
+   "clock": "00:32",
+   "title": "任务轨迹 · 底盘",
+   "type": "path"
+  },
+  {
+   "index": 3,
+   "start": 49.0,
+   "end": 64.933,
+   "seconds": 49,
+   "clock": "00:49",
+   "title": "任务遥测 · 高度曲线",
+   "type": "chart"
+  },
+  {
+   "index": 4,
+   "start": 64.933,
+   "end": 80.2,
+   "seconds": 65,
+   "clock": "01:05",
+   "title": "任务复盘 · 仪表盘",
+   "type": "image"
+  },
+  {
+   "index": 5,
+   "start": 80.2,
+   "end": 97.0,
+   "seconds": 80,
+   "clock": "01:20",
+   "title": "实现 · 航点执行",
+   "type": "code"
+  },
+  {
+   "index": 6,
+   "start": 97.0,
+   "end": 116.0,
+   "seconds": 97,
+   "clock": "01:37",
+   "title": "全流程结果",
+   "type": "metrics"
+  },
+  {
+   "index": 7,
+   "start": 116.0,
+   "end": 132.467,
+   "seconds": 116,
+   "clock": "01:56",
+   "title": "总结",
+   "type": "outro"
+  }
+ ],
+ "scenes": [
+  {
+   "index": 0,
+   "type": "title",
+   "start": 0.0,
+   "end": 15.633,
+   "section": "",
+   "narration": "最后一章不再单独看某个模块，而是让导航、视觉、机械臂和夹爪在同一次任务里闭环：从起点出发，找到苹果，抓起来，穿过仓库，放进目标盒。"
+  },
+  {
+   "index": 1,
+   "type": "image",
+   "start": 15.633,
+   "end": 31.6,
+   "section": "感知 · 苹果检测",
+   "narration": "视觉环节只做一件事：在 RGB 图里找到苹果，并确认它在深度图中的三维位置。检测置信度 0.761，边界框只有 20 像素宽，目标很小但足够稳定。"
+  },
+  {
+   "index": 2,
+   "type": "path",
+   "start": 31.6,
+   "end": 49.0,
+   "section": "任务轨迹 · 底盘",
+   "narration": "这是底盘走过的完整路径，全长 9.373 米。起点在左下取件台，抓起苹果后沿中间通道斜穿仓库，到右上放置区；颜色按就位、搬运、放置三段切分。"
+  },
+  {
+   "index": 3,
+   "type": "chart",
+   "start": 49.0,
+   "end": 64.933,
+   "section": "任务遥测 · 高度曲线",
+   "narration": "高度曲线把抓取和放置分得很清楚。苹果在取件台被夹起后抬升，搬运阶段保持夹持高度，到目标区后下放、释放；末端高度与苹果高度同步变化。"
+  },
+  {
+   "index": 4,
+   "type": "image",
+   "start": 64.933,
+   "end": 80.2,
+   "section": "任务复盘 · 仪表盘",
+   "narration": "仪表盘把整条任务链摊开：底盘轨迹、速度指令、苹果高度、夹爪开度、放置误差。任何一个环节失败，都能在时间轴上找到对应片段。"
+  },
+  {
+   "index": 5,
+   "type": "code",
+   "start": 80.2,
+   "end": 97.0,
+   "section": "实现 · 航点执行",
+   "narration": "任务代码按航点执行底盘路径：每个航点先算朝向，再用位姿控制器生成速度指令，每一步都记录状态。到达后，机械臂和夹爪按同样方式逐段执行。"
+  },
+  {
+   "index": 6,
+   "type": "metrics",
+   "start": 97.0,
+   "end": 116.0,
+   "section": "全流程结果",
+   "narration": "最终结果：任务成功，137.2 秒，3876 个样本。停靠 26.9 毫米，放置 31.6 和 37.7 毫米，检测置信度 0.761。没有人工接管，也没有中途重置。"
+  },
+  {
+   "index": 7,
+   "type": "outro",
+   "start": 116.0,
+   "end": 132.467,
+   "section": "",
+   "narration": "到这里，课程的主线走完了：底盘把机器人送到位置，传感器让它理解环境，机械臂完成最后的接触。下一步，轮到你把这套链路复现出来，再换一个任务。"
+  }
+ ],
+ "videoObject": {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "移动操作全流程",
+  "description": "导航、视觉、机械臂与夹爪，在同一次任务里闭环。",
+  "thumbnailUrl": [
+   "https://YunHaiKong.github.io/assets/videos/posters/ch12_mobile_manipulation.jpg"
+  ],
+  "uploadDate": "2026-10-24",
+  "duration": "PT2M12S",
+  "contentUrl": "https://YunHaiKong.github.io/assets/videos/ch12_mobile_manipulation.mp4",
+  "caption": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.vtt",
+  "transcript": "https://YunHaiKong.github.io/assets/videos/meta/ch12_mobile_manipulation.transcript.txt",
+  "inLanguage": "zh-CN"
+ }
+}

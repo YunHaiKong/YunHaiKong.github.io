@@ -17,23 +17,26 @@ draft: false
 - **第十二章：移动操作综合实践（全场景自主导航与移动操作 Mobile Manipulation）**——全教程的终极集大成者，机器人在 $9.5\text{m} \times 9.5\text{m}$ 复杂多障碍大场景中，自主执行**跨房间长途导航 $\to$ 车载 YOLO 在线识别 $\to$ 倾角前向力控抓取 $\to$ 携物跨房间越障导航与互锁监控 $\to$ 目标托盘双槽位高精度放置**的全闭环任务。
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph S1["阶段一：控制闭环 (第6章)"]
+        direction TB
         A1["四轮独立转向全向底盘"] --> A2["底盘静止抱闸与漂移抑制"]
         A2 --> A3["相对关节插值 vs 笛卡尔 DLS 增量抓取对比"]
     end
     subgraph S2["阶段二：感知闭环 (第9章)"]
+        direction TB
         B1["车载 RGB-D 相机流"] --> B2["3D 点云反投影与坐标变换"]
         B2 --> B3["RANSAC 平面拟合与欧氏距离聚类"]
         B3 --> B4["2.5D OBB 主轴估计与多偏航抓取生成"]
         B4 --> B5["夹爪网格碰撞过滤与 DLS 逆运动学抓放"]
     end
     subgraph S3["阶段三：全系统闭环 (第12章)"]
+        direction TB
         C1["9.5m×9.5m 室内大场景 A* 避障规划"] --> C2["Swerve 全向底盘闭环跟踪停靠"]
         C2 --> C3["YOLOv8 在线目标识别定位 (置信度 76.1%)"]
         C3 --> C4["倾角前向力控抓取 (解决垂直限位奇异点)"]
         C4 --> C5["跨房间长途携物越障导航 (零掉落状态互锁)"]
-        C5 --> C6["目标托盘双槽位毫米级自主放置"]
+        C5 --> C6["目标托盘双槽位厘米级自主放置"]
     end
     S1 --> S2 --> S3
 ```
@@ -72,9 +75,9 @@ flowchart TD
 
 | 评测维度 | 相对关节模式 (Relative Joint) | 笛卡尔增量模式 (Delta-EE) | 控制工程特性对比 |
 | :--- | :---: | :---: | :--- |
-| **总仿真步数 (Samples)** | 659 步 | 665 步 | 120Hz 物理频率下约 5.5 秒完成抓取与抬升 |
-| **物块垂直抬升高度** | **0.1589 m** | **0.1588 m** | 均完美达到 0.16m 设定阈值（误差 $< 1.2\text{ mm}$） |
-| **底盘停靠静止漂移** | **1.89 mm** | **1.88 mm** | 舵轮静止锁定阻尼优异，全向漂移量被控制在 2mm 内 |
+| **总遥测样本 (Samples)** | 658 个 | 664 个 | 20 Hz 遥测采样，全过程约 34 s |
+| **物块垂直抬升高度** | **0.1589 m** | **0.1588 m** | 均达到 0.16 m 抬升目标（差值 $< 1.2\text{ mm}$） |
+| **底盘停靠静止漂移** | **1.90 mm** | **1.88 mm** | 舵轮静止锁定阻尼优异，全向漂移量被控制在 2mm 内 |
 | **末端三维空间轨迹特征** | 呈平滑空间弧线过渡 | **严格沿三维笛卡尔直线行进** | 笛卡尔模式轨迹保真度更高，关节模式动力学冲击更小 |
 | **最终抓放成功率** | **100% SUCCESS** | **100% SUCCESS** | 两者均顺利完成接触、抬升、平移与入框全流程 |
 
@@ -160,7 +163,7 @@ sequenceDiagram
     Cam->>Table: Phase 2: 车载相机帧采集与 YOLOv8 目标识别 (置信度 76.1%)
     Arm->>Table: Phase 3: 倾角前向逆解下探、夹紧闭合、垂直抬升验证 (z=1.05m)
     Arm->>Base: 机械臂收回携物安全位姿，激活夹爪闭合互锁状态机
-    Base->>Table: Phase 4: 跨房间长途携物避障导航 (9.5m 越障, 停靠误差 26.9mm)
+    Base->>Table: Phase 4: 跨房间长途携物避障导航 (9.373m 路径, 停靠误差 26.9mm)
     Note over Base,Arm: 实时监控夹爪开度处于 [0.08, 0.60] rad，确保零掉落
     Arm->>Table: Phase 5: 精准对准托盘槽位 0，下放释放源桌苹果 (落点误差 31.6mm)
     Arm->>Table: Phase 6: 抓取目标桌第二个苹果，精准放置于托盘槽位 1 (落点误差 37.7mm)
@@ -188,7 +191,7 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 - 状态机全程以 120Hz 监测夹持关节位置：约束在有效携物开度区间 $[0.08, 0.60]\text{ rad}$ 内。若开度突变为 $0$（空夹）或接近 $0.785$（滑脱张开），系统立即触发掉落故障告警并停止底盘；
 - 实测 3,876 帧全程零掉落故障（`carry_transit_drop_fault: false`）。
 
-#### E. 托盘双槽位毫米级自主放置落点分析
+#### E. 托盘双槽位厘米级自主放置落点分析
 目标托盘（尺寸 $0.22\text{m} \times 0.20\text{m}$）上划分了两个目标装载槽位：
 - **槽位 0 (Slot 0)**：设定坐标 $[3.00, 2.13]\text{m}$；
 - **槽位 1 (Slot 1)**：设定坐标 $[3.00, 2.23]\text{m}$。
@@ -205,7 +208,7 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 | 任务子阶段 | 设定基准 / 理论目标 | 实际仿真执行数值 | 精度评定 / 误差 | 阶段评定 |
 | :--- | :---: | :---: | :---: | :---: |
 | **源桌导航停靠 (Source Dock)** | `[-3.66, -3.20, 0.0]` m | `[-3.660, -3.200, 0.0]` m | **0.0 mm** | **PERFECT** |
-| **跨房间导航停靠 (Dest Dock)** | `[2.52, 2.60, 0.0]` m | `[2.500, 2.582, 0.038]` m | **26.9 mm** (横跨 9.5m 避障) | **EXCELLENT** |
+| **跨房间导航停靠 (Dest Dock)** | `[2.52, 2.60, 0.0]` m | `[2.500, 2.582, 0.038]` m | **26.9 mm** (9.373 m 路径) | **EXCELLENT** |
 | **长途携物掉落故障 (Drop Fault)** | 允许掉落率 0% | 监测夹持开度处于 $[0.08, 0.60]$ | **0 次掉落 (False)** | **ZERO FAULT** |
 | **车载 YOLOv8 目标识别置信度** | 阈值 $\ge 0.40$ | 类别 `apple` (class 0) | **置信度 76.1% (0.761)** | **PASS** |
 | **源桌苹果抓取抬升验证 (Lift)** | 提升高度 $> \text{桌台}+0.08\text{m}$ | 实测苹果高度提升至 $z=1.05\text{m}$ | **垂直提升成功 (True)** | **VERIFIED** |
@@ -262,9 +265,9 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
 
 ### 1. 进阶综合大作业实践合集：移动抓放消漂、点云几何切面与全场景端到端闭环
 > 💡 **视频内容**：
-> - **第六章**：Joint 关节锁定模式 vs Delta 增量模式底盘消漂对比，基座漂移仅 1.88 mm，提升高度 0.1589 m。
-> - **第九章**：RGB-D 点云平截体滤波、局部法向量估计与 GraspGenX 多偏航角几何切面抓取打分（最优评分 0.795）。
-> - **第十二章**：9.5m 全向巡航导航、YOLOv8 动态检测（置信度 76.1%）、倾斜预抓姿态规划、提拉防掉落物理验证、双槽位托盘自主放置（误差 31.6mm / 37.7mm）。
+> - **第六章**：Joint 关节增量 vs Delta 末端增量两种控制模式的停靠漂移对比，最终漂移 1.88 / 1.90 mm，红块抬升 15.9 cm。
+> - **第九章**：RGB-D 点云分割与多偏航角几何抓取打分（三类物体最高分 0.795–0.799），执行记录 1 次、罐子入盒成功。
+> - **第十二章**：9.373 m 全向巡航、YOLO 检测（置信度 0.761）、倾斜预抓姿态、提拉防掉落验证、双槽位托盘自主放置（平面误差 31.6 / 37.7 mm）。
 
 <div style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); background: #0b0f19;">
   <video poster="/assets/videos/posters/video_capstone_practices_ch6_ch9_ch12.jpg" src="/assets/videos/video_capstone_practices_ch6_ch9_ch12.mp4" controls preload="none" style="width: 100%; max-height: 540px; display: block; border-radius: 12px;">
@@ -272,23 +275,29 @@ $$\boldsymbol{R}_{\text{grasp}} = \boldsymbol{R}_{\text{down}} \cdot \text{Rot}_
   </video>
 </div>
 
-#### 🎙️ 解说旁白与章节时间戳 (Narration Script)
-| 时间戳 | 综合大作业阶段 | 核心指标与控制参数 | 解说旁白摘要 |
-| :--- | :--- | :--- | :--- |
-| **00:00 - 00:12** | 拓展实践概述 | Ch 6 + Ch 9 + Ch 12 综合集锦 | 欢迎观看综合拓展实践合集视频，汇集三大核心大作业，代表具身智能在复杂物理环境中的最高落地水平。 |
-| **00:12 - 00:24** | 第六章：底盘消漂 | 基座漂移 RMSE 1.88mm，提拉 0.1589m | Joint 模式施加零速约束，将抓取瞬间底盘滑移从十余毫米压低至 1.88 mm，工件平稳提拉不掉落。 |
-| **00:24 - 00:36** | 第九章：点云几何抓取 | 深度反投影 + 法向量切面得分 0.795 | 点云平截体滤波去噪，表面法向量圆周采样抓取位姿，几何切面碰撞测试与力封闭验证达成稳定抓放。 |
-| **00:36 - 00:48** | 第十二章：端到端闭环 | 9.5m 巡航 + 倾斜抓取 + 盘载双槽归位 | 9.5m 巡航、YOLO 锁定目标、倾斜预抓提拉、带载转运并分别以 31.6mm 与 37.7mm 误差入槽，大闭环完美达成。 |
+> 🎧 **播放器增强**：本页 4 条视频均为**画面内嵌中文字幕**，并提供 **VTT 字幕文件**、**可点击章节导航** 与 **完整文字稿**，移动端自动使用 720p 视频源；章节时间轴以实际配音为准。
 
 ---
 
 ### 2. 分章节专项综合演示视频
-- **第六章：移动底盘-机械臂协同抓放对比与基座消漂**：
+**第六章：移动底盘-机械臂协同抓放对比与基座消漂**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch06_mobile_pick_place.jpg" src="/assets/videos/ch06_mobile_pick_place.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
-- **第九章：RGB-D 空间点云分割与几何切面抓取规划**：
+</div>
+
+**第九章：RGB-D 空间点云分割与几何切面抓取规划**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch09_rgbd_grasp.jpg" src="/assets/videos/ch09_rgbd_grasp.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
-- **第十二章：全场景端到端自主移动操作 Mobile Manipulation 闭环**：
+</div>
+
+**第十二章：全场景端到端自主移动操作 Mobile Manipulation 闭环**：
+
+<div class="video-embed">
   <video poster="/assets/videos/posters/ch12_mobile_manipulation.jpg" src="/assets/videos/ch12_mobile_manipulation.mp4" controls preload="none" style="width: 100%; max-height: 420px; margin: 12px 0; border-radius: 8px;"></video>
+</div>
+
 
 ## 🎯 总结与打卡寄语
 
