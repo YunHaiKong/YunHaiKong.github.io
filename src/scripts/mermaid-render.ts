@@ -43,6 +43,20 @@ function mountSource(pre: HTMLElement): HTMLElement | null {
 	return host;
 }
 
+function normalizeSvgSize(host: HTMLElement) {
+	const svg = host.querySelector<SVGSVGElement>("svg");
+	const viewBox = svg?.viewBox?.baseVal;
+	if (!svg || !viewBox?.width) return;
+	svg.style.removeProperty("max-width");
+	const width = svg.getAttribute("width");
+	if (!width || width === "100%") {
+		svg.setAttribute("width", String(Math.round(viewBox.width)));
+	}
+	if (!svg.getAttribute("height") && viewBox.height) {
+		svg.setAttribute("height", String(Math.round(viewBox.height)));
+	}
+}
+
 async function renderDiagram(pre: HTMLElement, host: HTMLElement, theme: MermaidTheme) {
 	if (pre.dataset.mermaidBusy === "1") return;
 	pre.dataset.mermaidBusy = "1";
@@ -65,6 +79,7 @@ async function renderDiagram(pre: HTMLElement, host: HTMLElement, theme: Mermaid
 		});
 		const { svg } = await mermaid.render(`mermaid-svg-${++seq}`, sourceOf(pre));
 		host.innerHTML = svg;
+		normalizeSvgSize(host);
 		host.dataset.theme = theme;
 		host.dataset.state = "ready";
 	} catch (error) {
